@@ -57,15 +57,14 @@ export function show($page) {
                 from: '400%'
             }
         });
-    })
-    .then(function() {
+    }).then(function() {
         var {frame, done} = animation.get('.light')
             .action('box-unfold', {
                 origin: [0, 0],
                 angle: 0
             });
 
-        var complete = 100;
+        var complete = 10;
 
         return Promise.race([
             new Promise(function(resolve, reject) {
@@ -95,8 +94,13 @@ export function show($page) {
         ]).then(function() {
             return frame(1, 1);
         });
-    })
-    .then(function() {
+    }).then(function() {
+        return Promise.all([
+            preload.getImage(`${path}/car.jpg`),
+            preload.getImage(`${path}/left-btn.png`),
+            preload.getImage(`${path}/right-btn.png`)
+        ]);
+    }).then(function() {
         return Promise.all([
             animation.get('.car').animate({
                 duration: 500,
@@ -111,6 +115,8 @@ export function show($page) {
                 timingFunction: 'easeOut'
             })
         ]);
+    }).then(function() {
+        return preload.getImage(`${path}/next.gif`)
     }).then(function() {
         return animation.get('.next').animate({
             delay: 200,

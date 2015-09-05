@@ -30,6 +30,7 @@ export function add(name) {
 
     var $root = $(`<div id="${name}" class="page"></div>`);
     var $html = $(page.render());
+    var renderPromise = [];
 
     $html.find('img').each(function() {
         var $img = $(this);
@@ -38,12 +39,21 @@ export function add(name) {
 
             $img.attr('src', placeHolderImg);
 
-            preload.getImage(src)
+            var promise = preload.getImage(src)
                 .then(function(image) {
-                    $img.replaceWith(image);
+                    return $img.replaceWith(image);
                 })['catch'](function(e) {
-                    $img.attr('src', src);
+                    return new Promise(function(resolve) {
+                        $img.on('load', function handle() {
+                            $img.off('load', handle);
+                            resolve();
+                        }).attr('src', 'src')
+                    });
                 });
+
+            if (name !== 'home') {
+                renderPromise.push(promise);
+            }
         }
     });
 
@@ -54,7 +64,9 @@ export function add(name) {
         $root: $root,
         show: function() {
             if (!shown) {
-                shown = page.show($root);
+                shown = Promise.all(renderPromise).then(function() {
+                    return page.show($root);
+                });
             }
             return shown;
         }
