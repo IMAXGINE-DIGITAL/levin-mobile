@@ -1,0 +1,1 @@
+export default ["images/light.gif","images/logo.gif","images/placeholder.gif","images/home/car.jpg","images/home/left-btn.png","images/home/next.gif","images/home/right-btn.png","images/nav/logo.jpg","images/page_a/bg.jpg","images/page_a/car.png","images/page_a/eagle.png","images/page_a/light.png","images/page_a/text.png"]
