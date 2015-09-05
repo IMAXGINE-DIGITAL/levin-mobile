@@ -65,22 +65,29 @@ export function show($page) {
                 angle: 0
             });
 
-        var complete = 30;
+        var complete = 100;
 
         return Promise.race([
             new Promise(function(resolve, reject) {
+                var firstPercentage;
+
                 preload.onprogress(function($image, 
                     $allImages, 
                     $properImages, 
                     $brokenImages, 
                     isBroken, 
                     percentage) {
+                    if (!firstPercentage) {
+                        firstPercentage = percentage;
+                    }
 
-                    var value = Math.min(percentage / complete, complete);
+                    var value = Math.min(percentage, complete);
                     if (value === complete) {
                         resolve();
                     } else {
-                        frame(value, value);
+                        var ratio = (percentage - firstPercentage) / 
+                                    (complete - firstPercentage);
+                        frame(ratio, ratio);
                     }
                 });
             }),
