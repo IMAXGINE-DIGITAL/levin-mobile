@@ -97,9 +97,8 @@ export function show(name) {
 
 var seq = [
     'home',   // 加载
-    'page_a', // 首页
     // 外观组
-    
+    'page_a', // 外观
     // 内饰组
     
     // 空间组
@@ -107,8 +106,6 @@ var seq = [
     // 操控
     
     // 安全
-    
-
 ]
 export function indexOf(name) {
     return seq.indexOf(name);
