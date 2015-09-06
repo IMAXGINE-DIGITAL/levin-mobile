@@ -68,7 +68,7 @@ domReady().then(function () {
     vw = vp[0];
     vh = vp[1];
 
-    size = $body.attr('size') || 'contain';
+    size = location.search.replace('?', '') || $body.attr('size') || 'contain';
 
     $(window).on('resize', resize);
     resize(false);
