@@ -68,8 +68,13 @@ domReady().then(function () {
     vw = vp[0];
     vh = vp[1];
 
-    size = location.search.replace('?', '') || $body.attr('size') || 'contain';
-
+    var match;
+    if ((match = location.search.match(/^\?(contain|cover)/))) {
+        size = match[1];
+    } else {
+        size = $body.attr('size') || 'contain';
+    }
+    
     $(window).on('resize', resize);
     resize(false);
 
