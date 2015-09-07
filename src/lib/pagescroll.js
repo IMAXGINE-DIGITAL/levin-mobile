@@ -29,7 +29,7 @@ export function scroll($pageRoot, name) {
                     $pageRoot.animate({
                         top: -top + '%'
                     }, {
-                        duration: 400,
+                        duration: 700,
                         complete: function() {
                             lastpage.$root.css({
                                 display: 'none'
