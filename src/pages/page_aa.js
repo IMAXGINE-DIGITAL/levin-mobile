@@ -1,8 +1,14 @@
 import './page_a.less';
 import $ from 'jquery';
-import {Promise, defer} from '../lib/promise';
+import {
+    Promise, defer
+}
+from '../lib/promise';
 import * as page from '../lib/page';
-import {elementRect} from '../lib/util';
+import {
+    elementRect
+}
+from '../lib/util';
 import '../lib/animation';
 /**
  * 400 × 269
@@ -17,7 +23,7 @@ export function render() {
             <img src="${path}/bg.jpg" />
         </div>
 
-        <div class="el car anime zoom" style="${elementRect(100,67,235,478)}">
+        <div class="el car anime slide-in" style="${elementRect(100,67,255,620)}">
             <img src="${path}/car.png" />
         </div>
         
@@ -30,7 +36,20 @@ export function show($page) {
     return animation.then(function() {
         $page.find('.car').show();
         return animation.get('.car').animate({
-            duration: 800,
+            duration: 400,
+            'slide-in': {
+                offset: '10%',
+                from: 'top'
+            }
+        }).then(function(item){
+            $page.find('.car')
+                .removeClass('slide-in')
+                .addClass('zoom');
+        })
+    }).then(function() {
+        return animation.get('.car').animate({
+            duration: 400,
+            delay: 200,
             'zoom': {
                 from: '100%',
                 to: '1000%'
