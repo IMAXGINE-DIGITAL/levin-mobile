@@ -111,6 +111,9 @@ var seq = [
     'home',   // 加载
     // 外观组
     'page_a', // 外观
+    'page_aa', // 大灯前脸
+    'page_ab', // 尾灯
+    'page_ah', // 空气导流
     // 内饰组
     'page_b', // 内饰
     'page_c', // 天窗
@@ -123,6 +126,9 @@ var seq = [
     // 操控
     
     // 安全
+    'page_ag', // 五星安全
+    'page_af', // GOA车身
+    'page_ae', // 主动安全配置
 ]
 export function indexOf(name) {
     return seq.indexOf(name);
