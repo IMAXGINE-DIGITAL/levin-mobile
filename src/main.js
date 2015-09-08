@@ -3,6 +3,7 @@ import $ from 'jquery';
 import {Promise, defer} from './lib/promise';
 import './lib/viewport';
 import * as nav from './lib/nav';
+import * as rotate from './lib/rotate';
 import * as page from './lib/page';
 import * as pagescroll from './lib/pagescroll';
 import './lib/gesture';
