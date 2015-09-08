@@ -19,11 +19,11 @@ export function render() {
     var path = 'images/page_ae';
 
     return `
-        <div class="el car anime slide-in" style="${elementRect(1000,1096,0,0)}">
+        <div class="el car anime slide-in" style="${elementRect(1000,1136,0,0)}">
             <img src="${path}/car.jpg" />
         </div>
 
-        <div class="el car-qn anime fade-in" style="${elementRect(640,1096,0,0)}">
+        <div class="el car-qn anime fade-in" style="${elementRect(640,1136,0,0)}">
             <img src="${path}/car2.jpg" />
         </div>
 

@@ -19,7 +19,7 @@ export function render() {
     var path = 'images/page_aa';
 
     return `
-        <div class="bg" style="${elementRect(640,1021,0,0)}">
+        <div class="bg" style="${elementRect(640,1136,0,0)}">
             <img src="${path}/bg.jpg" />
         </div>
         <div class="el car anime zoom" style="${elementRect(100,67,255,620)}">

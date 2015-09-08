@@ -19,19 +19,19 @@ export function render() {
     var path = 'images/page_ab';
 
     return `
-        <div class="el car anime slide-in" style="${elementRect(1000,1095,0,0)}">
+        <div class="el car anime slide-in" style="${elementRect(1000,1136,0,0)}">
             <img src="${path}/car-total.jpg" />
         </div>
 
-        <div class="el gray anime fade-in" style="${elementRect(640,1100,0,-2)}">
+        <div class="el gray anime fade-in" style="${elementRect(640,1136,0,-2)}">
             <img src="${path}/gray.jpg" />
         </div>
 
-        <div class="el car-light anime fade-in" style="${elementRect(640,1100,0,-2)}">
+        <div class="el car-light anime fade-in" style="${elementRect(640,1136,0,-2)}">
             <img src="${path}/car-light.jpg" />
         </div>
 
-        <div class="el number-text anime number" style="font-style:italic;font-size:165%;text-align:left;color:#fff;${elementRect(180,90,218,732)}">
+        <div class="el number-text anime number" style="font-style:italic;font-size:140%;text-align:left;color:#fff;${elementRect(180,90,218,732)}">
         </div>
 
         <div class="el text anime box-unfold" style="${elementRect(478,107,158,757)}">

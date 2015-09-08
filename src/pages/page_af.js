@@ -19,7 +19,7 @@ export function render() {
     var path = 'images/page_af';
 
     return `
-        <div class="bg" style="${elementRect(640,1096,0,0)}">
+        <div class="bg" style="${elementRect(640,1136,0,0)}">
             <img src="${path}/bg.jpg" />
         </div>
 

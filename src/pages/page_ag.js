@@ -19,19 +19,19 @@ export function render() {
     var path = 'images/page_ag';
 
     return `
-        <div class="car" style="${elementRect(640,1100,0,0)}">
+        <div class="car" style="${elementRect(640,1136,0,0)}">
             <img src="${path}/car.jpg" />
         </div>
 
-        <div class="el car2 anime fade-in" style="${elementRect(640,1100,0,0)}">
+        <div class="el car2 anime fade-in" style="${elementRect(640,1136,0,0)}">
             <img src="${path}/car2.jpg" />
         </div>
 
-        <div class="el text1 anime fade-in" style="${elementRect(438,212,112,196)}">
+        <div class="el text1 anime fade-in" style="${elementRect(438,212,112,234)}">
             <img src="${path}/text1.png" />
         </div>
 
-        <div class="el text2 anime fade-in" style="${elementRect(363,178,33,871)}">
+        <div class="el text2 anime fade-in" style="${elementRect(363,178,33,913)}">
             <img src="${path}/text2.png" />
         </div>
 
@@ -44,20 +44,22 @@ export function show($page) {
     var animation = $page.animation();
 
     return animation.then(function() {
-        return animation.get('.car2').animate({
-            duration: 400,
-            delay:200
+            return animation.get('.car2').animate({
+                duration: 600,
+                delay: 300
+            })
+        }).then(function() {
+            return animation.get('.text1').animate({
+                delay: 300,
+                duration: 600
+            });
         })
-    }).then(function() {
-        return animation.get('.text1').animate({
-            duration: 400
-        });
-    })
-    .then(function() {
-        return animation.get('.text2').animate({
-            duration: 400
-        });
-    })
+        .then(function() {
+            return animation.get('.text2').animate({
+                delay: 300,
+                duration: 600
+            });
+        })
 
 
 }
