@@ -3,6 +3,7 @@ import $ from 'jquery';
 import {Promise, defer} from './lib/promise';
 import './lib/viewport';
 import * as nav from './lib/nav';
+import * as menu from './lib/menu';
 import * as rotate from './lib/rotate';
 import * as page from './lib/page';
 import * as pagescroll from './lib/pagescroll';
@@ -68,8 +69,8 @@ page.ready().then(function ($pageRoot) {
         Promise.race([
             hashchange(),
             pagechange(),
-            pageflick()
-            // menu.navto(), 
+            pageflick(),
+            menu.navto() 
         ]).then(function(ret) {
             var name;
             if (['next', 'prev'].indexOf(ret) > -1) {
@@ -84,6 +85,11 @@ page.ready().then(function ($pageRoot) {
                 return pagescroll.scroll($pageRoot, name);
             }
         }).then(function(name) {
+            if (name === 'home') {
+                nav.hideBackBtn();
+            } else {
+                nav.showBackBtn();
+            }
             return circle(name);
         });
     }

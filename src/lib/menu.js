@@ -17,23 +17,25 @@ var path = 'images/menu';
 function render() {
     return `
         <div id="menu">
-            <div class="el goto-a" nav-to="2" style="${elementRect(251,250,66,327)}">
-                <img src="${path}/goto_a.png">
-            </div>
-            <div class="el goto-b" nav-to="5" style="${elementRect(250,249,374,327)}">
-                <img src="${path}/goto_b.png">
-            </div>
-            <div class="el goto-c" nav-to="8" style="${elementRect(250,250,681,327)}">
-                <img src="${path}/goto_c.png">
-            </div>
-            <div class="el goto-d" nav-to="13" style="${elementRect(250,251,990,327)}">
-                <img src="${path}/goto_d.png">
-            </div>
-            <div class="el goto-e" nav-to="15" style="${elementRect(250,251,1297,327)}">
-                <img src="${path}/goto_e.png">
-            </div>
-            <div class="el top-menu-close" style="${elementRect(148,72,722,0)}">
-                <img src="${path}/top-menu-close.png">
+            <div class="wrap">
+                <div class="el goto-a" nav-to="1" style="${elementRect(374,375,199,19)}">
+                    <img src="${path}/goto_a.png">
+                </div>
+                <div class="el goto-b" nav-to="5" style="${elementRect(374,375,5,212)}">
+                    <img src="${path}/goto_b.png">
+                </div>
+                <div class="el goto-c" nav-to="8" style="${elementRect(371,374,199,405)}">
+                    <img src="${path}/goto_c.png">
+                </div>
+                <div class="el goto-d" nav-to="10" style="${elementRect(375,375,5,598)}">
+                    <img src="${path}/goto_d.png">
+                </div>
+                <div class="el goto-e" nav-to="13" style="${elementRect(376,376,195,790)}">
+                    <img src="${path}/goto_e.png">
+                </div>
+                <div class="el top-menu-close" style="${elementRect(261,200,397,0)}">
+                    <img src="${path}/top-menu-close.png">
+                </div>
             </div>
         </div>
     `;
@@ -64,14 +66,38 @@ export function navto() {
     });
 }
 
+const WIDTH =  640;
+const HEIGHT = 1136;
+function resizeHandler($menu) {
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+
+    var wRatio = WIDTH / width;
+    var hRatio = HEIGHT / height;
+    var ratio = Math.max(wRatio, hRatio);
+
+    var rWidth = WIDTH / ratio;
+    var rHeight = HEIGHT / ratio;
+    $menu.find('.wrap').css({
+        width: rWidth,
+        height: rHeight
+    });
+}
+
 viewport.ready().then(function ($viewport) {
     var $menu = $(render());
-    $viewport.append($menu);
+    $(document.body).append($menu);
+
+    $(window).on('resize', function() {
+        resizeHandler($menu);
+    });
 
     $menu.on('click', '.top-menu-close', function() {
         hide();
         nav.show();
     });
+
+    resizeHandler($menu);
 
     deferred.resolve($menu);
 });

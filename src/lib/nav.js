@@ -3,7 +3,7 @@ import $ from 'jquery';
 import {Promise, defer} from './promise';
 import * as viewport from './viewport';
 import {elementRect} from './util';
-// import * as menu from './menu';
+import * as menu from './menu';
 
 var deferred = defer();
 
@@ -23,6 +23,20 @@ export function hide() {
     });
 }
 
+export function showBackBtn() {
+    ready().then(function($nav) {
+        $nav.find('.back')
+            .css('visibility', 'visible');
+    });
+}
+
+export function hideBackBtn() {
+    ready().then(function($nav) {
+        $nav.find('.back')
+            .css('visibility', 'hidden');
+    });
+}
+ 
 var path = 'images/nav';
 
 function render() {
@@ -38,13 +52,13 @@ viewport.ready().then(function ($viewport) {
     var $nav = $(render());
     $(document.body).append($nav);
 
-    $nav.on('tap', '.back', function() {
-        history.back();
+    $nav.on('click', '.back', function() {
+        $(document).trigger('pagechange', 'home');
     });
 
-    $nav.on('tap', '.menu', function() {
-        // hide();
-        // menu.show();
+    $nav.on('click', '.menu', function() {
+        hide();
+        menu.show();
     });
 
     deferred.resolve($nav);

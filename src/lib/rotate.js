@@ -25,9 +25,28 @@ function render() {
     `;
 }
 
+function checkOrient() {
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+
+    ready().then(function($rotate) {
+        if (width > height && $rotate.css('display') === 'none') {
+            $rotate.show()
+                .find('img')
+                .addClass('anime-shake');
+        } else if (width < height && $rotate.css('display') === 'block') {
+            $rotate.hide()
+                .find('img')
+                .removeClass('anime-shake');
+        }
+    });
+}
+
 viewport.ready().then(function ($viewport) {
     var $rotate = $(render());
     $(document.body).append($rotate);
 
+    $(window).on('orientationchange resize', checkOrient);
+    checkOrient();
     deferred.resolve($rotate);
 });
