@@ -45,7 +45,7 @@ export function show($page) {
 
     return animation.then(function() {
         return animation.get('.car').animate({
-            duration: 400,
+            duration: 600,
             delay:200
         })
     }).then(function() {
