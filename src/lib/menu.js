@@ -21,16 +21,16 @@ function render() {
                 <div class="el goto-a" nav-to="1" style="${elementRect(374,375,199,19)}">
                     <img src="${path}/goto_a.png">
                 </div>
-                <div class="el goto-b" nav-to="5" style="${elementRect(374,375,5,212)}">
+                <div class="el goto-b" nav-to="6" style="${elementRect(374,375,5,212)}">
                     <img src="${path}/goto_b.png">
                 </div>
-                <div class="el goto-c" nav-to="8" style="${elementRect(371,374,199,405)}">
+                <div class="el goto-c" nav-to="9" style="${elementRect(371,374,199,405)}">
                     <img src="${path}/goto_c.png">
                 </div>
-                <div class="el goto-d" nav-to="10" style="${elementRect(375,375,5,598)}">
+                <div class="el goto-d" nav-to="13" style="${elementRect(375,375,5,598)}">
                     <img src="${path}/goto_d.png">
                 </div>
-                <div class="el goto-e" nav-to="13" style="${elementRect(376,376,195,790)}">
+                <div class="el goto-e" nav-to="16" style="${elementRect(376,376,195,790)}">
                     <img src="${path}/goto_e.png">
                 </div>
                 <div class="el top-menu-close" style="${elementRect(261,200,397,0)}">

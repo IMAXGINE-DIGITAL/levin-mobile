@@ -59,7 +59,7 @@ export function show($page) {
             });
     }).then(function() {
         return animation.get('.line1').animate({
-            duration: 400,
+            duration: 800,
             'box-unfold': {
                 origin: [0, 0],
                 angle: 0
@@ -71,7 +71,7 @@ export function show($page) {
         });
     }).then(function() {
         return animation.get('.line1').animate({
-            duration: 400,
+            duration: 800,
             delay: 200,
             'box-fold': {
                 origin: ['100%', 0],
@@ -82,7 +82,7 @@ export function show($page) {
         });
     }).then(function() {
         return animation.get('.line2').animate({
-            duration: 400,
+            duration: 600,
             'box-unfold': {
                 origin: ['100%', '100%'],
                 angle: 0
@@ -94,7 +94,7 @@ export function show($page) {
         });
     }).then(function() {
         return animation.get('.line3').animate({
-            duration: 400,
+            duration: 600,
             delay: 200,
             'box-unfold': {
                 origin: [0, 0],
@@ -107,7 +107,7 @@ export function show($page) {
         });
     }).then(function() {
         return animation.get('.line2').animate({
-            duration: 400,
+            duration: 600,
             'box-fold': {
                 origin: [0, 0],
                 angle: 0
@@ -117,7 +117,7 @@ export function show($page) {
         })
     }).then(function() {
         return animation.get('.line3').animate({
-            duration: 400,
+            duration: 600,
             delay: 200,
             'box-fold': {
                 origin: ['100%', 0],

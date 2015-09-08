@@ -44,22 +44,20 @@ export function show($page) {
     var animation = $page.animation();
 
     return animation.then(function() {
+
             return animation.get('.car2').animate({
                 duration: 600,
                 delay: 300
             })
         }).then(function() {
             return animation.get('.text1').animate({
-                delay: 300,
-                duration: 600
+                duration: 700
             });
         })
         .then(function() {
             return animation.get('.text2').animate({
                 delay: 300,
-                duration: 600
+                duration: 700
             });
         })
-
-
 }
