@@ -124,11 +124,15 @@ var seq = [
     'page_f', // 座椅
     
     // 操控
+    'page_g', // 油耗
+    'page_j', // 变速器
+    'page_i', // 换挡
     
     // 安全
     'page_ag', // 五星安全
     'page_af', // GOA车身
     'page_ae', // 主动安全配置
+    'page_h' // 主动安全系统
 ]
 export function indexOf(name) {
     return seq.indexOf(name);
