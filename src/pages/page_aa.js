@@ -23,7 +23,6 @@ export function render() {
             <img src="${path}/bg.jpg" />
         </div>
 
-        
         <div class="el car anime zoom" style="${elementRect(100,67,264,600)}">
             <img src="${path}/car.png" />
         </div>
