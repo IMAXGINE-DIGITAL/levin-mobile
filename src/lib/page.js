@@ -121,15 +121,17 @@ var seq = [
     
     // 空间组
     'page_e', // 8:轴距
+    'page_ai', // 后排
     'page_f', // 座椅
+    'page_aj', // 后备
     
     // 操控
-    'page_g', // 10:油耗
+    'page_g', // 12:油耗
     'page_j', // 变速器
     'page_i', // 换挡
     
     // 安全
-    'page_ag', // 13:五星安全
+    'page_ag', // 15:五星安全
     'page_af', // GOA车身
     'page_ae', // 主动安全配置
     'page_h' // 主动安全系统
