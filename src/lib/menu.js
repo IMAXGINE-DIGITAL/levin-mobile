@@ -20,18 +20,23 @@ function render() {
             <div class="wrap">
                 <div class="el goto-a" nav-to="1" style="${elementRect(374,375,199,19)}">
                     <img src="${path}/goto_a.png">
+                    <a style="${elementRect(182,182,95,95,[374,375])}"></a>
                 </div>
                 <div class="el goto-b" nav-to="5" style="${elementRect(374,375,5,212)}">
                     <img src="${path}/goto_b.png">
+                    <a style="${elementRect(182,182,95,95,[374,375])}"></a>
                 </div>
                 <div class="el goto-c" nav-to="8" style="${elementRect(371,374,199,405)}">
                     <img src="${path}/goto_c.png">
+                    <a style="${elementRect(182,182,95,95,[371,374])}"></a>
                 </div>
                 <div class="el goto-d" nav-to="12" style="${elementRect(375,375,5,598)}">
                     <img src="${path}/goto_d.png">
+                    <a style="${elementRect(182,182,95,95,[375,375])}"></a>
                 </div>
                 <div class="el goto-e" nav-to="15" style="${elementRect(376,376,195,790)}">
                     <img src="${path}/goto_e.png">
+                    <a style="${elementRect(182,182,95,95,[376,376])}"></a>
                 </div>
                 <div class="el top-menu-close" style="${elementRect(261,200,397,0)}">
                     <img src="${path}/top-menu-close.png">
@@ -56,11 +61,11 @@ export function hide() {
 export function navto() {
     return ready().then(function($menu) {
         return new Promise(function(resolve, reject) {
-            $menu.on('click', '[nav-to]', function handler() {
-                $menu.off('click', '[mav-to]', handler);
+            $menu.on('click', '[nav-to] a', function handler() {
+                $menu.off('click', '[mav-to] a', handler);
                 hide();
                 nav.show();
-                resolve(parseInt($(this).attr('nav-to')));
+                resolve(parseInt($(this).parent().attr('nav-to')));
             });
         });
     });

@@ -18,17 +18,12 @@ export function render() {
     var path = 'images/page_ai';
 
     return `
-        
         <div class="el bg" style="${elementRect(640,1136,0,0)}">
             <img src="${path}/bg.jpg"/>
         </div>
-
-
-        <div class="el text anime fade-in" style="${elementRect(517,76,8,229)}">
+        <div class="el text anime fade-in" style="${elementRect(517,76,8,349)}">
             <img src="${path}/text.png"/>
         </div>
-
-
 
     `;
 }

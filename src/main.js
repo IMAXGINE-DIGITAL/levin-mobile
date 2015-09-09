@@ -81,7 +81,7 @@ page.ready().then(function ($pageRoot) {
                 name = ret;
             }
 
-            if (name) {
+            if (name && name !== curName) {
                 return pagescroll.scroll($pageRoot, name);
             }
         }).then(function(name) {

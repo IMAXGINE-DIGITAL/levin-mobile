@@ -21,7 +21,7 @@ export function render() {
         <div class="el eagle anime fly-in" style="${elementRect(309,108,0,529)}">
             <img src="${path}/eagle.png" />
         </div>
-        <div class="el text anime fade-in" style="${elementRect(554,141,13,219)}">
+        <div class="el text anime fade-in" style="${elementRect(554,141,13,339)}">
             <img src="${path}/text.png" />
         </div>
     `;

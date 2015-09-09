@@ -23,19 +23,19 @@ export function render() {
             <img src="${path}/bg.jpg" />
         </div>
 
-        <div class="el car anime zoom" style="${elementRect(100,67,264,600)}">
+        <div class="el car anime zoom" style="${elementRect(100,67,264,670)}">
             <img src="${path}/car.png" />
         </div>
 
-        <div class="el car-front anime box-unfold" style="${elementRect(650,365.625,-11,422)}">
+        <div class="el car-front anime box-unfold" style="${elementRect(650,365.625,-11,495)}">
             <img src="${path}/car-front.png" />
         </div>
 
-        <div class="el light anime flash" style="${elementRect(636,91,0,544)}">
+        <div class="el light anime flash" style="${elementRect(636,91,0,604)}">
             <img src="${path}/light.png" />
         </div>
 
-        <div class="el text anime fly-in" style="${elementRect(479,110,33,210)}">
+        <div class="el text anime fly-in" style="${elementRect(479,110,33,300)}">
             <img src="${path}/text.png"/>
         </div>
 

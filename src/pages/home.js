@@ -13,10 +13,10 @@ var lightImg = require(`../../images/light`);
 export function render() {
     return `
         <div class="bg"></div>
-        <div class="el logo anime zoom" style="${elementRect(440,69,106,253)}">
+        <div class="el logo anime zoom" style="${elementRect(440,69,106,283)}">
             <img src="${logoImg}" />
         </div>
-        <div class="el light anime box-unfold" style="${elementRect(264,43,82,279)}">
+        <div class="el light anime box-unfold" style="${elementRect(264,43,82,309)}">
             <img src="${lightImg}" />
         </div>
         <div class="el car anime fade-in" style="${elementRect(591,350,49,434)}">
