@@ -1,6 +1,6 @@
-import * as ES6Prmoise from 'promise';
+// import * as ES6Prmoise from 'promise';
 
-var Promise = ES6Prmoise.default;
+var Promise = window.Promise;
 
 /**
  * Some features.

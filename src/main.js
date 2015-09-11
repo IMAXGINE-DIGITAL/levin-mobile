@@ -20,7 +20,7 @@ domReady().then(function() {
     var ua = window.navigator.userAgent;
     var w = window.innerWidth;
     var h = window.innerHeight;
-    if (w / h >= 0.6) {
+    if (w / h >= 0.7) {
         $body.addClass('ss');
         window.fixSmallScreen = true;
     }

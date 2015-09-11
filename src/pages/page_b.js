@@ -30,7 +30,7 @@ export function render({IF_TEMPLATE}) {
             <div class="el text anime fly-in" 
                 style="${IF_TEMPLATE(ss, 
                     _elementRect(435 * 0.6,150 * 0.6,602,279),
-                    _elementRect(435,150,262,159))}">
+                    _elementRect(435 * 0.8,150 * 0.8,530,209))}">
                 <img src="${path}/text.png">
             </div>
         </div>

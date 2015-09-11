@@ -58,7 +58,8 @@ gulp.task('watch', function() {
 });
 
 gulp.task('dist', ['imagelist', 'webpack'], function() {
-    return gulp.src(['./temp/*.js'])
+    return gulp.src(['./src/promisePolyfill.js', './temp/levin.js'])
+        .pipe(concat('levin.js'))
         .pipe(uglifyjs())
         .pipe(gulp.dest('dist/'));
 });
