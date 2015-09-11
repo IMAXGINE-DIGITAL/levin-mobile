@@ -1,4 +1,4 @@
-import './page_a.less';
+import './page_aa.less';
 import $ from 'jquery';
 import {
     Promise, defer
@@ -19,27 +19,26 @@ export function render() {
     var path = 'images/page_aa';
 
     return `
-        <div class="bg" style="${elementRect(640,1136,0,0)}">
-            <img src="${path}/bg.jpg" />
+        <div class="wrap">
+            <div class="bg" style="${elementRect(640,1136,0,0)}">
+                <img src="${path}/bg.jpg" />
+            </div>
+            <div class="el car anime zoom" style="${elementRect(100,67,264,670)}">
+                <img src="${path}/car.png" />
+            </div>
+
+            <div class="el car-front anime box-unfold" style="${elementRect(650,365.625,-11,495)}">
+                <img src="${path}/car-front.png" />
+            </div>
+
+            <div class="el light anime flash" style="${elementRect(636,91,0,604)}">
+                <img src="${path}/light.png" />
+            </div>
+
+            <div class="el text anime fly-in" style="${elementRect(479,110,33,300)}">
+                <img src="${path}/text.png"/>
+            </div>
         </div>
-
-        <div class="el car anime zoom" style="${elementRect(100,67,264,670)}">
-            <img src="${path}/car.png" />
-        </div>
-
-        <div class="el car-front anime box-unfold" style="${elementRect(650,365.625,-11,495)}">
-            <img src="${path}/car-front.png" />
-        </div>
-
-        <div class="el light anime flash" style="${elementRect(636,91,0,604)}">
-            <img src="${path}/light.png" />
-        </div>
-
-        <div class="el text anime fly-in" style="${elementRect(479,110,33,300)}">
-            <img src="${path}/text.png"/>
-        </div>
-
-
     `;
 }
 

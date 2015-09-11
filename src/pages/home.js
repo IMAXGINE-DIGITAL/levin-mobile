@@ -7,20 +7,28 @@ import '../lib/animation';
 import * as preload from '../lib/preload';
 
 var path = 'images/home';
-var logoImg = require(`../../images/logo`);
-var lightImg = require(`../../images/light`);
+var logoImg = require(`../../images/logo.png`);
+var lightImg = require(`../../images/light.png`);
 
-export function render() {
+export function render({IF_TEMPLATE}) {
+    var ss = !!window.fixSmallScreen;
+
     return `
         <div class="bg"></div>
-        <div class="el logo anime zoom" style="${elementRect(440,69,106,283)}">
-            <img src="${logoImg}" />
+        <div class="el car anime fade-in" 
+            style="${IF_TEMPLATE(ss, 
+                        elementRect(591,350,49,550), 
+                        elementRect(591,350,49,434))}">
+            <img src="${path}/car.jpg"/>
         </div>
-        <div class="el light anime box-unfold" style="${elementRect(264,43,82,309)}">
+        <div class="el light anime box-unfold" style="${elementRect(264,43,82,529)}">
             <img src="${lightImg}" />
         </div>
-        <div class="el car anime fade-in" style="${elementRect(591,350,49,434)}">
-            <img src="${path}/car.jpg"/>
+        <div class="el logo anime zoom" 
+            style="${IF_TEMPLATE(ss,
+                        elementRect(440,69,106,503),
+                        elementRect(440,69,106,283))}">
+            <img src="${logoImg}" />
         </div>
         <div class="el left-btn anime fade-in" style="${elementRect(269,407,0,729)}">
             <img src="${path}/left-btn.png"/>
@@ -64,7 +72,7 @@ export function show($page) {
                 angle: 0
             });
 
-        var complete = 10;
+        var complete = 50;
 
         return Promise.race([
             new Promise(function(resolve, reject) {
@@ -79,7 +87,6 @@ export function show($page) {
                     if (!firstPercentage) {
                         firstPercentage = percentage;
                     }
-
                     var value = Math.min(percentage, complete);
                     if (value === complete) {
                         resolve();

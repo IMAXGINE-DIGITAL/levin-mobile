@@ -5,40 +5,43 @@ import * as page from '../lib/page';
 import {elementRect} from '../lib/util';
 import '../lib/animation';
 
-export function render() {
+export function render({IF_TEMPLATE}) {
     var path = 'images/page_f';
+    var ss = window.fixSmallScreen;
 
     return `
         <div class="bg"><img src="${path}/bg.jpg"></div>
-        <div class="el trigle1 anime box-unfold" style="${elementRect(393,389,170,535)}">
-            <img src="${path}/trigle1.png">
-        </div>
-        <div class="el trigle2 anime box-unfold" style="${elementRect(393,473,170,535)}">
-            <img src="${path}/trigle2.png">
-        </div>
-        <div class="el shadow anime fade-in" style="${elementRect(388,23,21,942)}">
-            <img src="${path}/shadow.jpg">
-        </div>
-        <div class="el text2 anime fade-in" style="${elementRect(270,93,41,490)}">
-            <img src="${path}/text2.png">
-        </div>
-        <div class="el text3 anime fade-in" style="${elementRect(219,91,411,829)}">
-            <img src="${path}/text3.png">
-        </div>
-        <div class="el text4 anime fade-in" style="${elementRect(277,92,90,970)}">
-            <img src="${path}/text4.png">
-        </div>
-        <div class="el seat anime fly-in" style="${elementRect(450,603,70,348)}">
-            <img src="${path}/seat.png">
-        </div>
-        <div class="el seat-back1 anime fade-in" style="${elementRect(264,489,280,368)}">
-            <img src="${path}/seat-back1.png">
-        </div>
-        <div class="el seat-back2 anime fade-in" style="${elementRect(322,474,292,399)}">
-            <img src="${path}/seat-back2.png">
-        </div>
-        <div class="el text1 anime box-unfold" style="${elementRect(459,127,41,283)}">
-            <img src="${path}/text1.png">
+        <div class="wrap">
+            <div class="el trigle1 anime box-unfold" style="${elementRect(393,389,170,535)}">
+                <img src="${path}/trigle1.png">
+            </div>
+            <div class="el trigle2 anime box-unfold" style="${elementRect(393,473,170,535)}">
+                <img src="${path}/trigle2.png">
+            </div>
+            <div class="el shadow anime fade-in" style="${elementRect(388,23,21,942)}">
+                <img src="${path}/shadow.jpg">
+            </div>
+            <div class="el text2 anime fade-in" style="${elementRect(270,93,41,490)}">
+                <img src="${path}/text2.png">
+            </div>
+            <div class="el text3 anime fade-in" style="${elementRect(219,91,411,829)}">
+                <img src="${path}/text3.png">
+            </div>
+            <div class="el text4 anime fade-in" style="${elementRect(277,92,90,970)}">
+                <img src="${path}/text4.png">
+            </div>
+            <div class="el seat anime fly-in" style="${elementRect(450,603,70,348)}">
+                <img src="${path}/seat.png">
+            </div>
+            <div class="el seat-back1 anime fade-in" style="${elementRect(264,489,280,368)}">
+                <img src="${path}/seat-back1.png">
+            </div>
+            <div class="el seat-back2 anime fade-in" style="${elementRect(322,474,292,399)}">
+                <img src="${path}/seat-back2.png">
+            </div>
+            <div class="el text1 anime box-unfold" style="${elementRect(459,127,41,283)}">
+                <img src="${path}/text1.png">
+            </div>
         </div>
     `;
 }

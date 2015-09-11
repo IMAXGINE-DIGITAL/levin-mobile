@@ -1,6 +1,6 @@
 import './main.less';
 import $ from 'jquery';
-import {Promise, defer} from './lib/promise';
+import {Promise, domReady, defer} from './lib/promise';
 import './lib/viewport';
 import * as nav from './lib/nav';
 import * as menu from './lib/menu';
@@ -9,8 +9,19 @@ import * as page from './lib/page';
 import * as pagescroll from './lib/pagescroll';
 import './lib/gesture';
 import preload from './lib/preload';
-
 preload();
+
+domReady().then(function() {
+    var $body = $(window.document.body);
+    var ua = window.navigator.userAgent;
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    if (ua.match(/iPhone/ig) && w / h >= 0.8) {
+        $body.addClass('ss');
+        window.fixSmallScreen = true;
+    }
+});
+
 
 page.ready().then(function ($pageRoot) {
     var $win = $(window);
@@ -82,6 +93,9 @@ page.ready().then(function ($pageRoot) {
             }
 
             if (name && name !== curName) {
+                if (location.search.indexOf('debug') > 0) {
+                    console.debug(name);
+                }
                 return pagescroll.scroll($pageRoot, name);
             }
         }).then(function(name) {

@@ -5,19 +5,28 @@ import * as page from '../lib/page';
 import {elementRect} from '../lib/util';
 import '../lib/animation';
 
-export function render() {
+export function render({IF_TEMPLATE}) {
     var path = 'images/page_j';
+    var ss = window.fixSmallScreen
 
     return `
-        <div class="bg"><img src="${path}/bg.jpg"></div>
-        <div class="el text anime fade-in" style="${elementRect(296,94,126,258)}">
-            <img src="${path}/text.png">
-        </div>
-        <div class="el number1 anime number" style="${elementRect(99,132,34,200)}">
-            0
-        </div>
-        <div class="el shift anime box-unfold" style="${elementRect(396,144,92,822)}">
-            <img src="${path}/shift.png">
+        <div class="wrap">
+            <div class="bg"><img src="${path}/bg.jpg"></div>
+            <div class="el text anime fade-in" 
+                style="${IF_TEMPLATE(ss, 
+                    elementRect(296,94,126,408),
+                    elementRect(296,94,126,258))}">
+                <img src="${path}/text.png">
+            </div>
+            <div class="el number1 anime number" 
+                style="${IF_TEMPLATE(ss, 
+                    elementRect(99,132,34,350),
+                    elementRect(99,132,34,200))}">
+                0
+            </div>
+            <div class="el shift anime box-unfold" style="${elementRect(396,144,92,822)}">
+                <img src="${path}/shift.png">
+            </div>
         </div>
     `;
 }

@@ -9,9 +9,11 @@ export function render() {
     var path = 'images/page_h';
 
     return `
-        <div class="bg"><img src="${path}/bg.jpg"></div>
-        <div class="el text anime fade-in" style="${elementRect(597,65,22,203)}">
-            <img src="${path}/text.gif">
+        <div class="wrap">
+            <div class="bg"><img src="${path}/bg.jpg"></div>
+            <div class="el text anime fade-in" style="${elementRect(597,65,22,203)}">
+                <img src="${path}/text.gif">
+            </div>
         </div>
     `;
 }

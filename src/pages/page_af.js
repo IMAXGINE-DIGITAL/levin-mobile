@@ -1,4 +1,4 @@
-import './page_a.less';
+import './page_af.less';
 import $ from 'jquery';
 import {
     Promise, defer
@@ -15,28 +15,28 @@ import '../lib/animation';
  *                 <div class="el car anime zoom" style="${elementRect(640,430,-20,460)}">
 
  */
-export function render() {
+export function render({IF_TEMPLATE}) {
     var path = 'images/page_af';
+    var ss = window.fixSmallScreen;
 
     return `
-        <div class="bg" style="${elementRect(640,1136,0,0)}">
+        <div class="bg"}">
             <img src="${path}/bg.jpg" />
         </div>
-
-        <div class="el car anime fade-in" style="${elementRect(616,341,8,508)}">
-            <img src="${path}/car.png" />
+        <div class="wrap">
+            <div class="el car anime fade-in" style="${elementRect(616,341,8,508)}">
+                <img src="${path}/car.png" />
+            </div>
+            <div class="el text1 anime fade-in" 
+                style="${IF_TEMPLATE(ss, 
+                    elementRect(567,111,16,351),
+                    elementRect(567,111,16,211))}">
+                <img src="${path}/text1.png" />
+            </div>
+            <div class="el text2 anime fade-in" style="${elementRect(323,139,305,912)}">
+                <img src="${path}/text2.png" />
+            </div>
         </div>
-
-        <div class="el text1 anime fade-in" style="${elementRect(567,111,16,211)}">
-            <img src="${path}/text1.png" />
-        </div>
-
-        <div class="el text2 anime fade-in" style="${elementRect(323,139,305,912)}">
-            <img src="${path}/text2.png" />
-        </div>
-
-        
-        
     `;
 }
 

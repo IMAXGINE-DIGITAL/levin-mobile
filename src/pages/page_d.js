@@ -11,12 +11,14 @@ export function render() {
     var path = 'images/page_d';
 
     return `
-        <div class="bg"><img src="${path}/bg.jpg"></div>
-        <div class="el wind anime box-unfold" style="${elementRect(640,503,0,494)}">
-            <img src="${path}/wind.jpg">
-        </div>
-        <div class="el text anime fade-in" style="${elementRect(589,140,18,875)}">
-            <img src="${path}/text.png">
+        <div class="wrap">
+            <div class="bg"><img src="${path}/bg.jpg"></div>
+            <div class="el wind anime box-unfold" style="${elementRect(640,503,0,494)}">
+                <img src="${path}/wind.jpg">
+            </div>
+            <div class="el text anime fade-in" style="${elementRect(589,140,18,875)}">
+                <img src="${path}/text.png">
+            </div>
         </div>
     `;
 }

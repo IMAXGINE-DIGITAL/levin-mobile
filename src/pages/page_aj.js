@@ -1,4 +1,4 @@
-import './page_ah.less';
+import './page_aj.less';
 import * as jQuery from 'jquery';
 import {
     Promise, defer
@@ -18,21 +18,17 @@ export function render() {
     var path = 'images/page_aj';
 
     return `
-        
-        <div class="el car" style="${elementRect(640,1136,0,0)}">
-            <img src="${path}/car.jpg"/>
+        <div class="wrap">
+            <div class="el car" style="${elementRect(640,1136,0,0)}">
+                <img src="${path}/car.jpg"/>
+            </div>
+            <div class="el car2 anime fade-in" style="${elementRect(640,1136,0,0)}">
+                <img src="${path}/car2.jpg"/>
+            </div>
+            <div class="el text anime fade-in" style="${elementRect(536,74,8,309)}">
+                <img src="${path}/text.png"/>
+            </div>
         </div>
-
-        <div class="el car2 anime fade-in" style="${elementRect(640,1136,0,0)}">
-            <img src="${path}/car2.jpg"/>
-        </div>
-
-        <div class="el text anime fade-in" style="${elementRect(536,74,8,309)}">
-            <img src="${path}/text.png"/>
-        </div>
-
-
-
     `;
 }
 

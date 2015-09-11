@@ -14,35 +14,29 @@ import '../lib/animation';
 var $ = jQuery.noConflict();
 
 
-export function render() {
+export function render({IF_TEMPLATE}) {
     var path = 'images/page_ah';
+    var ss = window.fixSmallScreen;
 
     return `
-        
         <div class="el bg" style="${elementRect(640,1136,0,0)}">
             <img src="${path}/bg.jpg"/>
         </div>
-
-        
-
         <div class="el lg rotate" style="${elementRect(96,96,445,876)}">
             <img src="${path}/lg.png"/>
         </div>
-
         <div class="el lg rotate" style="${elementRect(96,96,58,876)}">
             <img src="${path}/lg1.png"/>
         </div>
-
         <div class="el dl anime box-unfold" style="${elementRect(756,154,0,746)}">
             <img src="${path}/dl.png"/>
         </div>
-
-        <div class="el text anime fade-in" style="${elementRect(451,73,38,276)}">
+        <div class="el text anime fade-in" 
+            style="${IF_TEMPLATE(ss, 
+                elementRect(451,73,38,506),
+                elementRect(451,73,38,276))}">
             <img src="${path}/text.png"/>
         </div>
-
-
-
     `;
 }
 

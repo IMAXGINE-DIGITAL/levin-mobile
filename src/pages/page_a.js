@@ -5,8 +5,10 @@ import * as page from '../lib/page';
 import {elementRect} from '../lib/util';
 import '../lib/animation';
 
-export function render() {
-    var path = 'images/page_a';
+var path = 'images/page_a';
+
+export function render({IF_TEMPLATE}) {
+    var ss = window.fixSmallScreen;
 
     return `
         <div class="bg">
@@ -18,10 +20,16 @@ export function render() {
         <div class="el light anime box-unfold" style="${elementRect(240,48,69,799)}">
             <img src="${path}/light.png" />
         </div>
-        <div class="el eagle anime fly-in" style="${elementRect(309,108,0,529)}">
+        <div class="el eagle anime fly-in" 
+            style="${IF_TEMPLATE(ss,
+                elementRect(309,108,0,629),
+                elementRect(309,108,0,529))}">
             <img src="${path}/eagle.png" />
         </div>
-        <div class="el text anime fade-in" style="${elementRect(554,141,13,339)}">
+        <div class="el text anime fade-in" 
+            style="${IF_TEMPLATE(ss, 
+                elementRect(554,141,13,479),
+                elementRect(554,141,13,339))}">
             <img src="${path}/text.png" />
         </div>
     `;

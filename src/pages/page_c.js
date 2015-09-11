@@ -5,8 +5,9 @@ import * as page from '../lib/page';
 import {elementRect} from '../lib/util';
 import '../lib/animation';
 
-export function render() {
+export function render({IF_TEMPLATE}) {
     var path = 'images/page_c';
+    var ss = window.fixSmallScreen;
 
     return `        
         <div class="el bg"">
@@ -18,7 +19,10 @@ export function render() {
         <div class="el blue1 anime box-unfold" style="${elementRect(640,351,0,710)};">
             <img src="${path}/blue1.jpg"/>
         </div>
-        <div class="el text anime box-unfold" style="${elementRect(600,152,19,293)}">
+        <div class="el text anime box-unfold" 
+            style="${IF_TEMPLATE(ss, 
+                elementRect(600,152,19,493),
+                elementRect(600,152,19,293))}">
             <img src="${path}/text.gif"/>
         </div>
         <div class="el blue2 anime fade-in" style="${elementRect(640,351,0,710)}">

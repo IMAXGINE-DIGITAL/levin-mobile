@@ -9,12 +9,17 @@ rangeslider($);
 
 var path = 'images/page_e';
 
-export function render() {
+export function render({IF_TEMPLATE}) {
+    var ss = window.fixSmallScreen;
+
     return `
         <div class="bg">
             <img src="${path}/bg.jpg">
         </div>
-        <div class="el text anime fade-in" style="${elementRect(628,105,0,344)}">
+        <div class="el text anime fade-in" 
+            style="${IF_TEMPLATE(ss, 
+                elementRect(628,105,0,544),
+                elementRect(628,105,0,344))}">
             <img src="${path}/text.gif"/>
         </div>
         <div class="el car1 anime box-unfold" style="${elementRect(640,256,0,762)}">
@@ -23,7 +28,10 @@ export function render() {
         <div class="el car2 anime box-unfold" style="${elementRect(640,256,0,762)}">
             <img src="${path}/car2.jpg"/>
         </div>
-        <div class="el number1 anime fade-in" style="${elementRect(440,99,35,285)}">
+        <div class="el number1 anime fade-in" 
+            style="${IF_TEMPLATE(ss, 
+                elementRect(440,99,35,485),
+                elementRect(440,99,35,285))}">
             1660mm
         </div>
         <div class="el ruler anime fade-in" style="${elementRect(640,80,0,1014)}">

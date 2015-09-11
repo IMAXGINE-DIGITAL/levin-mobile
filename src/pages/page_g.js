@@ -10,35 +10,37 @@ export function render() {
 
     return `
         <div class="bg"><img src="${path}/bg.jpg"></div>
-        <div class="el shadow anime fade-in" style="${elementRect(427,158,121,964)}">
-            <img src="${path}/shadow.jpg">
-        </div>
-        <div class="el engine anime fly-in" style="${elementRect(316,309,170,737)}">
-            <img src="${path}/engine.png">
-        </div>
-        <div class="el table anime fade-in" style="${elementRect(588,187,20,352)}">
-            <img src="${path}/table.png">
-        </div>
-        <div class="el red-line1 anime box-unfold" style="${elementRect(166,26,76,415)}">
-            <img src="${path}/red-line1.png">
-        </div>
-        <div class="el blue-line1 anime box-unfold" style="${elementRect(163,99,78,396)}">
-            <img src="${path}/blue-line1.png">
-        </div>
-        <div class="el red-line2 anime box-unfold" style="${elementRect(171,29,383,399)}">
-            <img src="${path}/red-line2.png">
-        </div>
-        <div class="el blue-line2 anime box-unfold" style="${elementRect(171,101,384,378)}">
-            <img src="${path}/blue-line2.png">
-        </div>
-        <div class="el fue anime fade-in" style="${elementRect(587,114,32,557)}">
-            <img src="${path}/fue.png">
-        </div>
-        <div class="el number1 anime number" style="${elementRect(94,56,39,602)}">
-            5.9
-        </div>
-        <div class="el number2 anime number" style="${elementRect(93,58,358,602)}">
-            6.1
+        <div class="wrap">
+            <div class="el shadow anime fade-in" style="${elementRect(427,158,121,964)}">
+                <img src="${path}/shadow.jpg">
+            </div>
+            <div class="el engine anime fly-in" style="${elementRect(316,309,170,737)}">
+                <img src="${path}/engine.png">
+            </div>
+            <div class="el table anime fade-in" style="${elementRect(588,187,20,352)}">
+                <img src="${path}/table.png">
+            </div>
+            <div class="el red-line1 anime box-unfold" style="${elementRect(166,26,76,415)}">
+                <img src="${path}/red-line1.png">
+            </div>
+            <div class="el blue-line1 anime box-unfold" style="${elementRect(163,99,78,396)}">
+                <img src="${path}/blue-line1.png">
+            </div>
+            <div class="el red-line2 anime box-unfold" style="${elementRect(171,29,383,399)}">
+                <img src="${path}/red-line2.png">
+            </div>
+            <div class="el blue-line2 anime box-unfold" style="${elementRect(171,101,384,378)}">
+                <img src="${path}/blue-line2.png">
+            </div>
+            <div class="el fue anime fade-in" style="${elementRect(587,114,32,557)}">
+                <img src="${path}/fue.png">
+            </div>
+            <div class="el number1 anime number" style="${elementRect(94,56,39,602)}">
+                5.9
+            </div>
+            <div class="el number2 anime number" style="${elementRect(93,58,358,602)}">
+                6.1
+            </div>
         </div>
     `;
 }

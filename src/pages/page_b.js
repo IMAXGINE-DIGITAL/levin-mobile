@@ -9,8 +9,9 @@ function _elementRect(w,h,x,y) {
     return elementRect(w,h,x,y,[1357,1136]);
 }
 
-export function render() {
+export function render({IF_TEMPLATE}) {
     var path = 'images/page_b';
+    var ss = window.fixSmallScreen;
 
     return `
         <div class="wrap" style="${elementRect(1357,1136,0,0)}">
@@ -26,7 +27,10 @@ export function render() {
             <div class="el line3 anime box-unfold" style="${_elementRect(477,190,761,592)}">
                 <img src="${path}/line3.png">
             </div>
-            <div class="el text anime fly-in" style="${_elementRect(435,150,262,159)}">
+            <div class="el text anime fly-in" 
+                style="${IF_TEMPLATE(ss, 
+                    _elementRect(435 * 0.6,150 * 0.6,602,279),
+                    _elementRect(435,150,262,159))}">
                 <img src="${path}/text.png">
             </div>
         </div>

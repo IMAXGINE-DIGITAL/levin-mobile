@@ -5,15 +5,19 @@ import * as page from '../lib/page';
 import {elementRect} from '../lib/util';
 import '../lib/animation';
 
-export function render() {
+export function render({IF_TEMPLATE}) {
     var path = 'images/page_i';
+    var ss = window.fixSmallScreen;
 
     return `
         <div class="bg">
             <img src="${path}/bg.jpg">
         </div>
-        <div class="el car anime fade-in" style="${elementRect(294,720,184,174)}">
-            <img src="${path}/car.jpg">
+        <div class="el car anime fade-in" 
+            style="${IF_TEMPLATE(ss, 
+                elementRect(294 * 0.6, 720 * 0.6, 250, 400),
+                elementRect(294,720,184,174))}">
+            <img src="${path}/car.png">
         </div>
         <div class="el text anime fade-in" style="${elementRect(418,67,132,200)}">
             <img src="${path}/text.jpg">

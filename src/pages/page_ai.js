@@ -14,17 +14,20 @@ import '../lib/animation';
 var $ = jQuery.noConflict();
 
 
-export function render() {
+export function render({IF_TEMPLATE}) {
     var path = 'images/page_ai';
+    var ss = window.fixSmallScreen;
 
     return `
         <div class="el bg" style="${elementRect(640,1136,0,0)}">
             <img src="${path}/bg.jpg"/>
         </div>
-        <div class="el text anime fade-in" style="${elementRect(517,76,8,349)}">
+        <div class="el text anime fade-in" 
+            style="${IF_TEMPLATE(ss, 
+                elementRect(517,76,8,549),
+                elementRect(517,76,8,349))}">
             <img src="${path}/text.png"/>
         </div>
-
     `;
 }
 

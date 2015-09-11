@@ -19,6 +19,15 @@ export function ready() {
     return deferred.promise;
 }
 
+function $IF_TEMPLATE(condition, fun1, fun2) {
+    var value = condition ? fun1 : fun2;
+    if (typeof value === 'function') {
+        return value();
+    } else {
+        return value;
+    }
+}
+
 export function add(name) {
     var page = require('../pages/' + name);
     var deferred = defer();
@@ -29,7 +38,9 @@ export function add(name) {
     }
 
     var $root = $(`<div id="${name}" class="page"></div>`);
-    var $html = $(page.render());
+    var $html = $(page.render({
+        IF_TEMPLATE: $IF_TEMPLATE
+    }));
     var renderPromise = [];
 
     $html.find('img').each(function() {
