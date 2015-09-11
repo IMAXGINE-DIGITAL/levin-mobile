@@ -16,28 +16,19 @@
     background-position: center center;
     background-size: 159px 14px;
 
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: justify;
-    -moz-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
-    align-content: center;
-
     .back, .menu {
         font-size: 14px;
         color: #3d3d3d;
         line-height: 36px;
-        padding: 0 10px
+        padding: 0 10px;
     }
 
     .back {
-        visibility: hidden;
+        display: none;
+        float: left;
+    }
+
+    .menu {
+        float: right;
     }
 }

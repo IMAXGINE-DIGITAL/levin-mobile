@@ -25,15 +25,13 @@ export function hide() {
 
 export function showBackBtn() {
     ready().then(function($nav) {
-        $nav.find('.back')
-            .css('visibility', 'visible');
+        $nav.find('.back').show();
     });
 }
 
 export function hideBackBtn() {
     ready().then(function($nav) {
-        $nav.find('.back')
-            .css('visibility', 'hidden');
+        $nav.find('.back').hide();
     });
 }
  

@@ -12,6 +12,10 @@ import preload from './lib/preload';
 preload();
 
 domReady().then(function() {
+    document.addEventListener('touchmove', function(e) {
+        e.peventDefault();
+    });
+
     var $body = $(window.document.body);
     var ua = window.navigator.userAgent;
     var w = window.innerWidth;
@@ -95,6 +99,7 @@ page.ready().then(function ($pageRoot) {
             if (name && name !== curName) {
                 if (location.search.indexOf('debug') > 0) {
                     console.debug(name);
+                    location.replace('#' + name);
                 }
                 return pagescroll.scroll($pageRoot, name);
             }

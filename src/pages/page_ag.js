@@ -29,7 +29,7 @@ export function render({IF_TEMPLATE}) {
         <div class="el text1 anime fade-in" 
             style="${IF_TEMPLATE(ss, 
                 elementRect(438 * 0.5,212 * 0.5,20,504),
-                elementRect(438,212,112,234))}">
+                elementRect(438,212,112,284))}">
             <img src="${path}/text1.png" />
         </div>
         <div class="el text2 anime fade-in" style="${elementRect(363,178,33,913)}">

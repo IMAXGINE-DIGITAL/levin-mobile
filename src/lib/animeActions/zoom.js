@@ -43,8 +43,6 @@ export default function zoom($element, options) {
                     function(i1, i2) {
                         var curWidth = startWidth + (endWidth - startWidth) * i2;
                         var curHeight = startHeight + (endHeight - startHeight) * i2;
-                        // var curLeft = originLeft - (curWidth - startWidth) / 2;
-                        // var curTop = originTop - (curHeight - originHeight) / 2;
                         var curLeft = startLeft + (endLeft - startLeft) * i2;
                         var curTop = startTop + (endTop - startTop) * i2;
 

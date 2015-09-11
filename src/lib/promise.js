@@ -293,6 +293,6 @@ var context = Object.create({});
 
 PromiseFeatures.call(context);
 PromiseUtilities.call(context);
-context.Promise = window.Promise || context.ES6Promise;
+context.Promise = context.ES6Promise;
 
 export default context;

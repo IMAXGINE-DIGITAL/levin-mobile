@@ -1,4 +1,4 @@
-import {Promise} from './promise';
+import {Promise, defer} from './promise';
 import cb from './cubicbezier';
 
 var FPS = 60;
@@ -32,34 +32,21 @@ if (requestAnimationFrame === setTimeoutFrame || cancelAnimationFrame === clearT
     cancelAnimationFrame = clearTimeoutFrame;
 }
 
-function PromiseDefer() {
-    var deferred = {};
-    var promise = new Promise(function(resolve, reject) {
-        deferred.resolve = resolve;
-        deferred.reject = reject;
-    });
-    deferred.promise = promise;
-    return deferred;
-}
-
-function PromiseMixin(promise, context) {
-    ['then', 'catch'].forEach(function(method) {
-        context[method] = function() {
-            return promise[method].apply(promise, arguments);
-        }
-    });
-    return context;
-}
-
 /**
  * 构造一个帧对象
  * @class Frame
  * @param {Function} fun 当前帧执行的函数
  */
 function Frame(fun) {
-    var defer;
+    var deferred;
     var tick;
     var isCancel =false;
+
+    var nextFrame;
+    this.next = function(frame) {
+        nextFrame = frame;
+        return this;
+    }
 
     /**
      * 执行帧
@@ -72,15 +59,23 @@ function Frame(fun) {
         isCancel = false;
         var args = arguments;
 
-        defer = PromiseDefer();
-        PromiseMixin(defer.promise, this);
+        if (!deferred) {
+            deferred = defer();
+        }
 
         tick = requestAnimationFrame(function() {
             if (isCancel) return;
-            defer && defer.resolve(fun.apply(null, args));
+            if (nextFrame) {
+                if (typeof nextFrame === 'function') {
+                    nextFrame();
+                } else if (nextFrame instanceof Frame) {
+                    nextFrame.request();
+                }
+            }
+            deferred.resolve(fun.apply(null, args));
         });
 
-        return this;
+        return deferred.promise;
     }
 
     /**
@@ -167,8 +162,6 @@ function getBezier(timingFunction) {
  * @param {Function} frames       每一帧执行的函数
  */
 function Animation(duration, timingFunction, frames) {
-    var defer;
-
     var frameQueue = getFrameQueue(duration, frames);
     var framePercent = 1 / (duration / INTERVAL);
     var frameIndex = 0;
@@ -180,7 +173,7 @@ function Animation(duration, timingFunction, frames) {
     }
 
     var currentFrame;
-
+    var deferred;
     var isPlaying = false;
     /**
      * 播放动画
@@ -193,27 +186,32 @@ function Animation(duration, timingFunction, frames) {
         if (isPlaying) return;
         isPlaying = true;
 
-        if (!defer) {
-            defer = PromiseDefer();
-            PromiseMixin(defer.promise, this);
+        if (!deferred) {
+            deferred = defer();
         }
 
+        var isFinish;
         function request() {
             var percent = framePercent * (frameIndex + 1).toFixed(10);
             var currentFrame = frameQueue[frameIndex];
 
             currentFrame
+                .next(function() {
+                    if (frameIndex === frameQueue.length - 1) {
+                        isFinish = true;
+                    } else {
+                        frameIndex++;
+                        request();
+                    }
+                })
                 .request(percent.toFixed(10), bezier(percent).toFixed(10))
                 .then(function() {
                     if (!isPlaying) return;
 
-                    if (frameIndex === frameQueue.length - 1) {
+                    if (isFinish) {
                         isPlaying = false;
-                        defer && defer.resolve('FINISH');
-                        defer = null;
-                    } else {
-                        frameIndex++;
-                        request();
+                        deferred.resolve('FINISH');
+                        deferred = null;
                     }
                 }, function() {
                     // CANCEL
@@ -221,7 +219,8 @@ function Animation(duration, timingFunction, frames) {
         }
 
         request();
-        return this;
+
+        return deferred.promise;
     }
 
     /**

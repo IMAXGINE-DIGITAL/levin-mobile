@@ -21,7 +21,10 @@ export function render({IF_TEMPLATE}) {
                         elementRect(591,350,49,434))}">
             <img src="${path}/car.jpg"/>
         </div>
-        <div class="el light anime box-unfold" style="${elementRect(264,43,82,529)}">
+        <div class="el light anime box-unfold" 
+            style="${IF_TEMPLATE(ss,
+                elementRect(264,43,82,529),
+                elementRect(264,43,82,309))}">
             <img src="${lightImg}" />
         </div>
         <div class="el logo anime zoom" 
