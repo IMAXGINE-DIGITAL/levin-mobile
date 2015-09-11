@@ -19,10 +19,10 @@ export function render({IF_TEMPLATE}) {
                 elementRect(294,720,184,174))}">
             <img src="${path}/car.png">
         </div>
-        <div class="el text anime fade-in" style="${elementRect(418,67,132,200)}">
-            <img src="${path}/text.jpg">
+        <div class="el text anime fade-in" style="${elementRect(418,67,132,400)}">
+            <img src="${path}/text.png">
         </div>
-        <div class="el number1 anime number" style="${elementRect(92,127,46,144)}">
+        <div class="el number1 anime number" style="${elementRect(92,127,46,344)}">
             8
         </div>
     `;
