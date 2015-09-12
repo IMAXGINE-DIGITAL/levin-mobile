@@ -22,7 +22,7 @@ export function render({IF_TEMPLATE}) {
         <div class="el text anime box-unfold" 
             style="${IF_TEMPLATE(ss, 
                 elementRect(600,152,19,493),
-                elementRect(600,152,19,293))}">
+                elementRect(600,152,19,343))}">
             <img src="${path}/text.gif"/>
         </div>
         <div class="el blue2 anime fade-in" style="${elementRect(640,351,0,710)}">

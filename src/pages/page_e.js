@@ -19,7 +19,7 @@ export function render({IF_TEMPLATE}) {
         <div class="el text anime fade-in" 
             style="${IF_TEMPLATE(ss, 
                 elementRect(628,105,0,544),
-                elementRect(628,105,0,344))}">
+                elementRect(628,105,0,444))}">
             <img src="${path}/text.gif"/>
         </div>
         <div class="el car1 anime box-unfold" style="${elementRect(640,256,0,762)}">
@@ -31,7 +31,7 @@ export function render({IF_TEMPLATE}) {
         <div class="el number1 anime fade-in" 
             style="${IF_TEMPLATE(ss, 
                 elementRect(440,99,35,485),
-                elementRect(440,99,35,285))}">
+                elementRect(440,99,35,385))}">
             1660mm
         </div>
         <div class="el ruler anime fade-in" style="${elementRect(640,80,0,1014)}">

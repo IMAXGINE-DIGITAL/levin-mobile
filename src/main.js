@@ -20,7 +20,7 @@ domReady().then(function() {
     var ua = window.navigator.userAgent;
     var w = window.innerWidth;
     var h = window.innerHeight;
-    if (w / h >= 0.7) {
+    if (w / h >= 0.68) {
         $body.addClass('ss');
         window.fixSmallScreen = true;
     }
@@ -102,6 +102,8 @@ page.ready().then(function ($pageRoot) {
                     location.replace('#' + name);
                 }
                 return pagescroll.scroll($pageRoot, name);
+            } else {
+                return curName;
             }
         }).then(function(name) {
             if (name === 'home') {

@@ -16,13 +16,13 @@ export function render({IF_TEMPLATE}) {
         <div class="el car anime fade-in" 
             style="${IF_TEMPLATE(ss, 
                 elementRect(294 * 0.6, 720 * 0.6, 250, 400),
-                elementRect(294,720,184,174))}">
+                elementRect(294 * 0.8, 720 * 0.8, 220,304))}">
             <img src="${path}/car.png">
         </div>
-        <div class="el text anime fade-in" style="${elementRect(418,67,132,400)}">
+        <div class="el text anime fade-in" style="${elementRect(418,67,132,430)}">
             <img src="${path}/text.png">
         </div>
-        <div class="el number1 anime number" style="${elementRect(92,127,46,344)}">
+        <div class="el number1 anime number" style="${elementRect(92,127,46,374)}">
             8
         </div>
     `;

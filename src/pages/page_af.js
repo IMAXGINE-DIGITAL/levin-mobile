@@ -24,16 +24,14 @@ export function render({IF_TEMPLATE}) {
             <img src="${path}/bg.jpg" />
         </div>
         <div class="wrap">
-            <div class="el car anime fade-in" style="${elementRect(616,341,8,508)}">
+            <div class="el car anime fade-in" style="${elementRect(616,341,8,568)}">
                 <img src="${path}/car.png" />
             </div>
             <div class="el text1 anime fade-in" 
-                style="${IF_TEMPLATE(ss, 
-                    elementRect(567,111,16,351),
-                    elementRect(567,111,16,311))}">
+                style="${elementRect(567,111,16,381)}">
                 <img src="${path}/text1.png" />
             </div>
-            <div class="el text2 anime fade-in" style="${elementRect(323,139,305,912)}">
+            <div class="el text2 anime fade-in" style="${elementRect(323,139,305,992)}">
                 <img src="${path}/text2.png" />
             </div>
         </div>

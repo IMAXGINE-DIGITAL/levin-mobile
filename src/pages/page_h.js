@@ -11,7 +11,7 @@ export function render() {
     return `
         <div class="wrap">
             <div class="bg"><img src="${path}/bg.jpg"></div>
-            <div class="el text anime fade-in" style="${elementRect(597,65,22,203)}">
+            <div class="el text anime fade-in" style="${elementRect(597,65,22,233)}">
                 <img src="${path}/text.gif">
             </div>
         </div>

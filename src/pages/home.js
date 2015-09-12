@@ -7,8 +7,8 @@ import '../lib/animation';
 import * as preload from '../lib/preload';
 
 var path = 'images/home';
-var logoImg = require(`../../images/logo.png`);
-var lightImg = require(`../../images/light.png`);
+var logoImg = require(`../../images/logo.jpg`);
+var lightImg = require(`../../images/light.jpg`);
 
 export function render({IF_TEMPLATE}) {
     var ss = !!window.fixSmallScreen;
@@ -21,17 +21,17 @@ export function render({IF_TEMPLATE}) {
                         elementRect(591,350,49,434))}">
             <img src="${path}/car.jpg"/>
         </div>
-        <div class="el light anime box-unfold" 
-            style="${IF_TEMPLATE(ss,
-                elementRect(264,43,82,529),
-                elementRect(264,43,82,309))}">
-            <img src="${lightImg}" />
-        </div>
         <div class="el logo anime zoom" 
             style="${IF_TEMPLATE(ss,
-                        elementRect(440,69,106,503),
+                        elementRect(440,69,106,473),
                         elementRect(440,69,106,283))}">
             <img src="${logoImg}" />
+        </div>
+        <div class="el light anime box-unfold" 
+            style="${IF_TEMPLATE(ss,
+                elementRect(264,43,82,499),
+                elementRect(264,43,82,309))}">
+            <img src="${lightImg}" />
         </div>
         <div class="el left-btn anime fade-in" style="${elementRect(269,407,0,729)}">
             <img src="${path}/left-btn.png"/>

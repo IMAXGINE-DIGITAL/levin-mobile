@@ -84,7 +84,7 @@ export function add(name) {
     };
 
     ready().then(function($pages) {
-        $pages.append($root);
+        $pages.find('.page_wrap').append($root);
         deferred.resolve();
     });
 
@@ -161,7 +161,7 @@ export function length() {
 
 function render() {
     return `
-        <div id="pages"></div>
+        <div id="pages"><div class="page_wrap"></div></div>
     `;
 }
 
