@@ -34,9 +34,9 @@
                 border: 0;
 
                 &.anime-shake {
-                    -wekit-animation: phone-rotate-shake 1s linear 0s infinite;
-                    -ms-animation: phone-rotate-shake 1s linear 0s infinite;
-                    animation: phone-rotate-shake  1s linear 0s infinite;
+                    -webkit-animation: shake 1s linear 0s infinite;
+                    // -ms-animation: shake 1s linear 0s infinite;
+                    // animation: shake  1s linear 0s infinite;
                 }
             }
 
@@ -50,64 +50,46 @@
     }
 }
 
-@-webkit-keyframes phone-rotate-shake {
+@-webkit-keyframes shake {
     0% {
-        -webkit-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
-        transform: rotate(90deg);
+        -webkit-transform: rotate(-90deg);
     }
 
     50% {
         -webkit-transform: rotate(0);
-        -ms-transform: rotate(0);
-        transform: rotate(0);  
     }
 
     100% {
         -webkit-transform: rotate(0);
-        -ms-transform: rotate(0);
-        transform: rotate(0);  
     }
 }
 
 
-@-ms-keyframes phone-rotate-shake {
-       0% {
-        -webkit-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
-        transform: rotate(90deg);
+@-ms-keyframes shake {
+    0% {
+        -ms-transform: rotate(-90deg);
     }
 
     50% {
-        -webkit-transform: rotate(0);
         -ms-transform: rotate(0);
-        transform: rotate(0);  
     }
 
     100% {
-        -webkit-transform: rotate(0);
         -ms-transform: rotate(0);
-        transform: rotate(0);  
     }
 }
 
 
-@keyframes phone-rotate-shake {
+@keyframes shake {
      0% {
-        -webkit-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
-        transform: rotate(90deg);
+        transform: rotate(-90deg);
     }
 
     50% {
-        -webkit-transform: rotate(0);
-        -ms-transform: rotate(0);
         transform: rotate(0);  
     }
 
     100% {
-        -webkit-transform: rotate(0);
-        -ms-transform: rotate(0);
         transform: rotate(0);  
     }
 }

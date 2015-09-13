@@ -2,6 +2,8 @@ import './flyIn.less';
 import $ from 'jquery';
 import {Promise, delay} from '../promise';
 import fa from '../frameAnimation';
+import {transition} from '../util';
+
 
 /*
 'fly-in': {
@@ -36,16 +38,24 @@ export default function flyIn($element, options) {
             var from = flyInOpt.from || 'top';
 
             return ready.then(function() {
-                return fa(options.duration, 
-                    options.timingFunction || 'easeIn',
-                    function(i1, i2) {
-                        var [prop, sign] = POS_MAP[from];
-                        $wrap.css({
-                            display: 'block',
-                            [prop]: (1 - i2) * sign * 100 + '%'
-                        });
-                    }
-                ).play();
+                var [prop, sign] = POS_MAP[from];
+
+                $wrap.css({
+                    display: 'block',
+                    [prop]: sign * 100 + '%'
+                });
+
+                return (new Promise(function(resolve, reject) {
+                    transition($wrap[0], {
+                        [prop]: 0
+                    }, {
+                        prop: prop,
+                        duration: options.duration || 400,
+                        timingFunction: options.timingFunction || 'easeIn',
+                        delay: 0,
+                        complete: resolve
+                    });
+                }));
             }).then(function() {
                 $img.css({
                     display: 'block'

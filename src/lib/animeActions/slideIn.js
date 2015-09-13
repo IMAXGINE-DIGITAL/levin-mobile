@@ -2,6 +2,8 @@ import './slideIn.less';
 import $ from 'jquery';
 import {Promise, delay} from '../promise';
 import fa from '../frameAnimation';
+import {transition} from '../util';
+
 
 /*
     'slide-in': {
@@ -37,18 +39,24 @@ export default function slideIn($element, options) {
             };
 
             return ready.then(function() {
-                var prop = POS_MAP[from][0];
-                var sign = POS_MAP[from][1];
+                var [prop , sign]= POS_MAP[from];
 
-                return fa(options.duration, 
-                    options.timingFunction || 'easeIn',
-                    function(i1, i2) {
-                        $element.css({
-                            display: 'block',
-                            [prop]: (origin[prop] + offset * (1 - i2) * sign) * 100 + '%'
-                        });
-                    }
-                ).play();
+                $element.css({
+                    display: 'block',
+                    [prop]: (origin[prop] + offset * sign) * 100 + '%'
+                });
+
+                return (new Promise(function(resolve, reject) {
+                    transition($element[0], {
+                        [prop]: origin[prop] * 100 + '%'
+                    }, {
+                        prop: prop,
+                        duration: options.duration || 400,
+                        timingFunction: options.timingFunction || 'easeIn',
+                        delay: 0,
+                        complete: resolve
+                    });
+                }));
             });
         }
     )();

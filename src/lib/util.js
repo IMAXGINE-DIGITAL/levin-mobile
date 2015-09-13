@@ -11,3 +11,56 @@ export function elementRect(width, height, left, top, vp) {
         top:${top/h*100}%;
     `
 }
+
+export function transferTimingFunction(type) {
+    if (type instanceof Array) {
+        return 'cubic-bezier(' + type.join(',') + ')';
+    } else {
+        return type.replace(/[a-z]([A-Z])[a-z]/g, function($1) {
+            return $1.replace(/([A-Z])/, '-$1').toLowerCase();
+        });
+    }
+}
+
+export function transition(element, value, properties) {
+    var resolved;
+    var styles = {};
+    var {prop, duration, timingFunction, delay} = properties;
+    timingFunction = transferTimingFunction(timingFunction);
+
+    if (prop === 'transform') {
+        styles['webkitTransition'] = '-webkit-transform ' + 
+                    duration + 'ms ' + timingFunction + ' ' + delay + 'ms';
+        styles['transition'] = 'transform ' + 
+                    duration + 'ms ' + timingFunction + ' ' + delay + 'ms'; 
+    } else {
+        styles['webkitTransition'] = 
+            styles['transition'] = prop + ' ' + 
+                duration + 'ms ' + timingFunction + ' ' + delay + 'ms';
+    }
+
+    for (var key in styles) {
+        element.style[key] = styles[key];
+    }
+
+    function resolveHandler() {
+        element.removeEventListener('webkitTransitionEnd', resolveHandler);
+        element.removeEventListener('transitionend', resolveHandler);
+        for (var key in styles) {
+            element.style[key] = '';
+        }
+        !resolved && (resolved = true) && properties.complete();
+    }
+
+    element.addEventListener('webkitTransitionEnd', resolveHandler);
+
+    element.addEventListener('transitionend', resolveHandler);
+
+    setTimeout(resolveHandler, duration * 1.1);
+
+    setTimeout(function(){
+        for (var key in value) {
+            element.style[key] = value[key];
+        }
+    }, 0);
+}

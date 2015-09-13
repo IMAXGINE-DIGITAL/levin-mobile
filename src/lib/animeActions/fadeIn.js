@@ -2,6 +2,7 @@ import './fadeIn.less';
 import $ from 'jquery';
 import {Promise, delay} from '../promise';
 import fa from '../frameAnimation';
+import {transition} from '../util';
 
 export default function fadeIn($element, options) {
     return $element.hasClass('fade-in') && (
@@ -13,15 +14,22 @@ export default function fadeIn($element, options) {
             }
 
             return ready.then(function() {
-                return fa(options.duration, 
-                    options.timingFunction || 'easeIn',
-                    function(i1, i2) {
-                        $element.css({
-                            display: 'block',
-                            opacity: 1 * i2
-                        });
-                    }
-                ).play();
+                $element.css({
+                    display: 'block',
+                    opacity: 0
+                });
+
+                return new Promise(function(resolve, reject) {
+                    transition($element[0], {
+                        opacity: 1
+                    }, {
+                        prop: 'opacity',
+                        duration: options.duration || 400,
+                        timingFunction: options.timingFunction || 'easeIn',
+                        delay: 0,
+                        complete: resolve
+                    });
+                });
             });
         }
     )();

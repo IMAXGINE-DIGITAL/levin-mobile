@@ -2,6 +2,8 @@ import './flash.less';
 import $ from 'jquery';
 import {Promise, delay} from '../promise';
 import fa from '../frameAnimation';
+import {transition} from '../util';
+
 
 /*
 'flash': {
@@ -23,24 +25,58 @@ export default function flash($element, options) {
             var interval = flashOpt.interval || 200;
 
             function blink() {
-                return fa(interval / 2, 
-                    options.timingFunction || 'easeIn',
-                    function(i1, i2) {
-                        $element.css({
-                            opacity: 1 * i2
-                        });
-                    }
-                ).play()
-                .then(function() {
-                    return fa(interval / 2, 
-                        options.timingFunction || 'easeIn',
-                        function(i1, i2) {
-                            $element.css({
-                                opacity: 1 * (1 - i2)
-                            });
-                        }
-                    ).play();
+                $element.css({
+                    display: 'block',
+                    opacity: 0
                 });
+
+                return (new Promise(function(resolve, reject) {
+                    transition($element[0], {
+                        opacity: 1
+                    }, {
+                        prop: 'opacity',
+                        duration: interval / 2,
+                        timingFunction: options.timingFunction || 'easeIn',
+                        delay: 0,
+                        complete: resolve
+                    });
+                })).then(function() {
+                    $element.css({
+                        display: 'block',
+                        opacity: 1
+                    });
+
+                    return (new Promise(function(resolve, reject) {
+                        transition($element[0], {
+                            opacity: 0
+                        }, {
+                            prop: 'opacity',
+                            duration: interval / 2,
+                            timingFunction: options.timingFunction || 'easeIn',
+                            delay: 0,
+                            complete: resolve
+                        });
+                    }));
+                });
+
+                // return fa(interval / 2, 
+                //     options.timingFunction || 'easeIn',
+                //     function(i1, i2) {
+                //         $element.css({
+                //             opacity: 1 * i2
+                //         });
+                //     }
+                // ).play()
+                // .then(function() {
+                //     return fa(interval / 2, 
+                //         options.timingFunction || 'easeIn',
+                //         function(i1, i2) {
+                //             $element.css({
+                //                 opacity: 1 * (1 - i2)
+                //             });
+                //         }
+                //     ).play();
+                // });
             }
 
             return ready.then(function() {

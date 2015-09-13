@@ -2,6 +2,8 @@ import './flyOut.less';
 import $ from 'jquery';
 import {Promise, delay} from '../promise';
 import fa from '../frameAnimation';
+import {transition} from '../util';
+
 
 /*
 'fly-out': {
@@ -36,17 +38,24 @@ export default function flyOut($element, options) {
             var to = flyOutOpt.to || 'up';
 
             return ready.then(function() {
-                return fa(options.duration, 
-                    options.timingFunction || 'easeIn',
-                    function(i1, i2) {
-                        var [prop, sign] = POS_MAP[to];
+                var [prop, sign] = POS_MAP[to];
 
-                        $wrap.css({
-                            display: 'block',
-                            [prop]: i2 * sign * 100 + '%'
-                        });
-                    }
-                ).play();
+                $wrap.css({
+                    display: 'block',
+                    [prop]: 0 + '%'
+                });
+
+                return (new Promise(function(resolve, reject) {
+                    transition($wrap[0], {
+                        [prop]: sign * 100 + '%'
+                    }, {
+                        prop: prop,
+                        duration: options.duration || 400,
+                        timingFunction: options.timingFunction || 'easeIn',
+                        delay: 0,
+                        complete: resolve
+                    });
+                }));
             }).then(function() {
                 $img.appendTo($element);
                 $wrap.remove();

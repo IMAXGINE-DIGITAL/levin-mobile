@@ -2,6 +2,7 @@ import './slideOut.less';
 import $ from 'jquery';
 import {Promise, delay} from '../promise';
 import fa from '../frameAnimation';
+import {transition} from '../util';
 
 /*
     'slide-out': {
@@ -39,14 +40,22 @@ export default function slideIn($element, options) {
             return ready.then(function() {
                 var [prop, sign] = POS_MAP[to];
 
-                return fa(options.duration, 
-                    options.timingFunction || 'easeIn',
-                    function(i1, i2) {
-                        $element.css({
-                            [prop]: (origin[prop] + offset * i2 * sign) * 100 + '%'
-                        });
-                    }
-                ).play();
+                $element.css({
+                    display: 'block',
+                    [prop]: origin[prop] * 100 + '%'
+                });
+
+                return (new Promise(function(resolve, reject) {
+                    transition($element[0], {
+                        [prop]: (origin[prop] + offset * sign) * 100 + '%'
+                    }, {
+                        prop: prop,
+                        duration: options.duration || 400,
+                        timingFunction: options.timingFunction || 'easeIn',
+                        delay: 0,
+                        complete: resolve
+                    });
+                }));
             });
         }
     )();

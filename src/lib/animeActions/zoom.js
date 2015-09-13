@@ -2,6 +2,7 @@ import './zoom.less';
 import $ from 'jquery';
 import {Promise, delay} from '../promise';
 import fa from '../frameAnimation';
+import {transition} from '../util';
 
 /*
 zoom: {
@@ -38,23 +39,44 @@ export default function zoom($element, options) {
             var endTop = originTop - (endHeight - originHeight) / 2;
 
             return ready.then(function() {
-                return fa(options.duration, 
-                    options.timingFunction || 'easeIn',
-                    function(i1, i2) {
-                        var curWidth = startWidth + (endWidth - startWidth) * i2;
-                        var curHeight = startHeight + (endHeight - startHeight) * i2;
-                        var curLeft = startLeft + (endLeft - startLeft) * i2;
-                        var curTop = startTop + (endTop - startTop) * i2;
+                $element.css({
+                    display: 'block',
+                    webkitTransform: 'scale(' + from + ')',
+                    transform: 'scale(' + from + ')',
+                    webkitTransformOrigin: 'center center',
+                    transformOrigin: 'center center'
+                });
 
-                        $element.css({
-                            display: 'block',
-                            width: curWidth * 100 + '%',
-                            height: curHeight * 100 + '%',
-                            left: curLeft * 100 + '%',
-                            top: curTop * 100 + '%'
-                        });
-                    }
-                ).play();
+                return (new Promise(function(resolve, reject) {
+                    transition($element[0], {
+                        webkitTransform: 'scale(' + to + ')',
+                        transform: 'scale(' + to + ')'
+                    }, {
+                        prop: 'transform',
+                        duration: options.duration || 400,
+                        timingFunction: options.timingFunction || 'easeIn',
+                        delay: 0,
+                        complete: resolve
+                    });
+                }));
+
+                // return fa(options.duration, 
+                //     options.timingFunction || 'easeIn',
+                //     function(i1, i2) {
+                //         var curWidth = startWidth + (endWidth - startWidth) * i2;
+                //         var curHeight = startHeight + (endHeight - startHeight) * i2;
+                //         var curLeft = startLeft + (endLeft - startLeft) * i2;
+                //         var curTop = startTop + (endTop - startTop) * i2;
+
+                //         $element.css({
+                //             display: 'block',
+                //             width: curWidth * 100 + '%',
+                //             height: curHeight * 100 + '%',
+                //             left: curLeft * 100 + '%',
+                //             top: curTop * 100 + '%'
+                //         });
+                //     }
+                // ).play();
             });
         }
     )();
