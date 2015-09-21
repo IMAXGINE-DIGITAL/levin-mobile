@@ -23,9 +23,9 @@ export default function flyIn($element, options) {
             var elWidth = $element.width();
             var elHeight = $element.height();
 
-            var $img = $element.find('img');
+            var $children = $element.children();
             var $wrap = $('<div></div>')
-                    .append($img)
+                    .append($children)
                     .appendTo($element);
 
             var ready = Promise.resolve();
@@ -57,7 +57,7 @@ export default function flyIn($element, options) {
                     });
                 }));
             }).then(function() {
-                $img.css({
+                $children.css({
                     display: 'block'
                 }).appendTo($element);
                 $wrap.remove();

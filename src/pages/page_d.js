@@ -16,8 +16,13 @@ export function render() {
             <div class="el wind anime box-unfold" style="${elementRect(640,503,0,494)}">
                 <img src="${path}/wind.jpg">
             </div>
-            <div class="el text anime fade-in" style="${elementRect(589,140,18,875)}">
-                <img src="${path}/text.png">
+            <div class="el text anime fade-in text-wrap" style="${elementRect(589,140,18,875)}">
+                <span class="text_a" style="${elementRect(589,95,0,0,[589,140])}">
+                    高性能空调滤芯
+                </span>
+                <span class="text_b" style="${elementRect(589,45,0,105,[589,140])}">
+                    PM2.5隔离效率达94%
+                </span>
             </div>
         </div>
     `;

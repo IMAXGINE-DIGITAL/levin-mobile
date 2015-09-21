@@ -26,11 +26,13 @@ export function render({IF_TEMPLATE}) {
                 elementRect(309,108,0,529))}">
             <img src="${path}/eagle.png" />
         </div>
-        <div class="el text anime fade-in" 
+        <div class="el text anime fade-in text-wrap" 
             style="${IF_TEMPLATE(ss, 
                 elementRect(554,141,13,479),
                 elementRect(554,141,13,339))}">
-            <img src="${path}/text.png" />
+            <span class="text_a" style="${elementRect(445,111,0,0,[554,141])}">新锐领潮</span>
+            <span class="text_b" style="${elementRect(139,53,435,58,[554,141])}">的造型</span>
+            <span class="text_c" style="${elementRect(320,41,0,111,[554,141])}">极具辨识度与独特存在感</span>
         </div>
     `;
 }

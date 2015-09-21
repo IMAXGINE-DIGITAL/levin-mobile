@@ -1,20 +1,12 @@
 import './page_aa.less';
 import $ from 'jquery';
-import {
-    Promise, defer
-}
+import {Promise, defer}
 from '../lib/promise';
 import * as page from '../lib/page';
-import {
-    elementRect
-}
+import {elementRect}
 from '../lib/util';
 import '../lib/animation';
-/**
- * 400 × 269
- *                 <div class="el car anime zoom" style="${elementRect(640,430,-20,460)}">
 
- */
 export function render() {
     var path = 'images/page_aa';
 
@@ -35,8 +27,13 @@ export function render() {
                 <img src="${path}/light.png" />
             </div>
 
-            <div class="el text anime fly-in" style="${elementRect(479,110,33,300)}">
-                <img src="${path}/text.png"/>
+            <div class="el text anime fly-in text-wrap" style="${elementRect(479,110,33,300)}">
+                <span class="text_a" style="${elementRect(479,70,0,0,[479,110])}">
+                    我的型，我的范
+                </span>
+                <span class="text_b" style="${elementRect(479,30,0,80,[479,110])}">
+                    够前卫，才能成为路上的焦点！
+                </span>
             </div>
         </div>
     `;

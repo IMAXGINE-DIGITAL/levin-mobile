@@ -32,10 +32,12 @@ export function render() {
             <div class="el car-light anime fade-in" style="${elementRect(640,1136,0,-2)}">
                 <img src="${path}/car-light.jpg" />
             </div>
-            <div class="el number-text anime number" style="font-style:italic;font-size:140%;text-align:left;color:#fff;${elementRect(180,90,218,732)}">
+            <div class="el number1 anime number number-text" style="${elementRect(180,90,218,732)}">
             </div>
-            <div class="el text anime box-unfold" style="${elementRect(478,107,158,757)}">
-                <img src="${path}/text.png" />
+            <div class="el text anime box-unfold text-wrap" style="${elementRect(478,107,158,757)}">
+                <img src="${path}/light.png" />
+                <span class="text_a" style="${elementRect(190,56,255,20,[478,107])}">LED灯泡</span>
+                <span class="text_b" style="${elementRect(311,30,0,77,[478,107])}">即便是背影，也是范儿！</span>
             </div>
         </div>
     `;
@@ -59,7 +61,7 @@ export function show($page) {
             });
         }).then(function(item) {
             return animation.get('.logo').animate({
-                duration: 1000,
+                duration: 600,
                 delay: 200,
                 'box-unfold': {
                     origin: [0, 0],
@@ -72,7 +74,7 @@ export function show($page) {
                 delay: 100
             });
         }).then(function(item) {
-            return animation.get('.number-text').animate({
+            return animation.get('.number1').animate({
                 duration: 400,
                 'number': {
                     from: 0,

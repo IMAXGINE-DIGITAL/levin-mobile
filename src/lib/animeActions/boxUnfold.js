@@ -13,15 +13,25 @@ export function get($element, options) {
     var elWidth = $element.width();
     var elHeight = $element.height();
 
-    var $wrap = $('<div></div>');
-    var $img = $element.find('img').css({
+    var $childwrap = $element.find('.child-wrap');
+    if (!$childwrap.length) {
+        $childwrap = $('<div class="child-wrap"></div>');
+        $childwrap.append($element.children());
+    }
+    $childwrap.css({
+        position: 'absolute',
         width: elWidth + 'px',
-        height: elHeight + 'px'
+        height: elHeight + 'px',
+        left: 0,
+        top: 0
     });
 
-    $wrap.
-        append($img).
-        appendTo($element);
+    var $wrap = $element.find('.wrap')
+    if (!$wrap.length) {
+        $wrap = $('<div class="wrap"></div>');
+        $wrap.appendTo($element);
+    }
+    $wrap.append($childwrap);
 
     var boxUnfoldOpt = options['box-unfold'] || {};
 
@@ -60,20 +70,22 @@ export function get($element, options) {
             var top = originY - originY * i2;
 
             $wrap.css({
+                display: 'block',
                 width: width + 'px',
                 height: height + 'px',
                 left: left + 'px',
                 top: top + 'px'
             });
 
-            $img.css({
+            $childwrap.css({
                 left: -left + 'px',
                 top: -top + 'px'
             });
         },
 
         done() {
-            $img.css({
+            $childwrap.css({
+                display: 'block',
                 width: '100%',
                 height: '100%'
             }).appendTo($element);

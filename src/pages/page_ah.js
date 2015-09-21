@@ -22,20 +22,25 @@ export function render({IF_TEMPLATE}) {
         <div class="el bg" style="${elementRect(640,1136,0,0)}">
             <img src="${path}/bg.jpg"/>
         </div>
-        <div class="el lg rotate" style="${elementRect(96,96,445,876)}">
+        <div class="el lg1 rotate" style="${elementRect(96,96,445,876)}">
             <img src="${path}/lg.png"/>
         </div>
-        <div class="el lg rotate" style="${elementRect(96,96,58,876)}">
+        <div class="el lg2 rotate" style="${elementRect(96,96,58,876)}">
             <img src="${path}/lg1.png"/>
         </div>
         <div class="el dl anime box-unfold" style="${elementRect(756,154,0,746)}">
             <img src="${path}/dl.png"/>
         </div>
-        <div class="el text anime fade-in" 
+        <div class="el text anime fade-in text-wrap" 
             style="${IF_TEMPLATE(ss, 
-                elementRect(451,73,38,506),
-                elementRect(451,73,38,326))}">
-            <img src="${path}/text.png"/>
+                elementRect(451,103,38,506),
+                elementRect(451,103,38,326))}">
+            <span class="text_a" style="${elementRect(451,70,0,0,[451,103])}">
+                与其追风，不如破风而行
+            </span>
+            <span class="text_b" style="${elementRect(451,30,0,73,[451,103])}">
+                F1空气动力学设计，风阻系数只有0.29
+            </span>
         </div>
     `;
 }
@@ -55,7 +60,6 @@ export function show($page) {
                 }
             })
         })
-
         .then(function(item){
            return animation.get('.text').animate({
                 delay: 400,

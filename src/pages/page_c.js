@@ -19,11 +19,20 @@ export function render({IF_TEMPLATE}) {
         <div class="el blue1 anime box-unfold" style="${elementRect(640,351,0,710)};">
             <img src="${path}/blue1.jpg"/>
         </div>
-        <div class="el text anime box-unfold" 
+        <div class="el text anime box-unfold text-wrap" 
             style="${IF_TEMPLATE(ss, 
                 elementRect(600,152,19,493),
                 elementRect(600,152,19,343))}">
-            <img src="${path}/text.gif"/>
+            <img src="${path}/light.gif" />
+            <span class="text_a" style="${elementRect(263,52,0,62,[600,152])}">
+                比普通天窗大
+            </span>
+            <span class="text_b number-text" style="${elementRect(201,105,270,30,[600,152])}">
+                15%
+            </span>
+            <span class="text_c" style="${elementRect(608,34,0,129,[600,152])}">
+                窄边框设计,采光充足,增强通透感和车辆空间感。
+            </span>
         </div>
         <div class="el blue2 anime fade-in" style="${elementRect(640,351,0,710)}">
             <img src="${path}/blue2.png"/>
