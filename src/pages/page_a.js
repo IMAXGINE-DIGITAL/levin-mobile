@@ -20,10 +20,10 @@ export function render({IF_TEMPLATE}) {
         <div class="el light anime box-unfold" style="${elementRect(240,48,69,799)}">
             <img src="${path}/light.png" />
         </div>
-        <div class="el eagle anime fly-in" 
+        <div class="el eagle anime slide-in" 
             style="${IF_TEMPLATE(ss,
-                elementRect(309,108,0,629),
-                elementRect(309,108,0,529))}">
+                elementRect(309,108,20,629),
+                elementRect(309,108,20,529))}">
             <img src="${path}/eagle.png" />
         </div>
         <div class="el text anime fade-in text-wrap" 
@@ -61,8 +61,9 @@ export function show($page) {
         return animation.get('.eagle').animate({
             duration: 1000,
             timingFunction: [0,0,0,1],
-            'fly-in': {
-                from: 'right'
+            'slide-in': {
+                from: 'right',
+                offset: '70%'
             }
         });
     }).then(function() {

@@ -32,10 +32,8 @@ export function render({IF_TEMPLATE}) {
                 <span class="text_a" style="${elementRect(780,70,0,0,[780,130])}">
                     享誉全球的丰田独有GOA车身
                 </span>
-                <span class="text_b" style="${elementRect(780,20,0,60,[780,130])}">
+                <span class="text_b" style="${elementRect(600,20,0,50,[780,130])}">
                     大量运用高抗拉强度钢板，打造轻量化、高强度车身。
-                </span>
-                <span class="text_b" style="${elementRect(780,20,0,87,[780,130])}">
                     其中，门内防撞杆梁的抗拉强度高达1470兆帕，同级罕见。
                 </span>
             </div>
