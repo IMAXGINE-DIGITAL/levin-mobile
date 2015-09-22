@@ -25,8 +25,9 @@ export function render() {
             <div class="el car2 anime fade-in" style="${elementRect(640,1136,0,0)}">
                 <img src="${path}/car2.jpg"/>
             </div>
-            <div class="el text anime fade-in" style="${elementRect(536,74,8,309)}">
-                <img src="${path}/text.png"/>
+            <div class="el text anime fade-in text-wrap" style="${elementRect(536,134,8,309)}">
+                <span class="text_a" style="${elementRect(536,80,0,0,[536,134])}">超大行李空间</span>
+                <span class="text_b" style="${elementRect(536,40,0,90,[536,134])}">梦想再大，行囊再多，也能装载自如</span>
             </div>
         </div>
     `;

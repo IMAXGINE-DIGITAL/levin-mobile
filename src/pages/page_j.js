@@ -12,11 +12,14 @@ export function render({IF_TEMPLATE}) {
     return `
         <div class="wrap">
             <div class="bg"><img src="${path}/bg.jpg"></div>
-            <div class="el text anime fade-in" 
+            <div class="el text anime fade-in text-wrap" 
                 style="${IF_TEMPLATE(ss, 
                     elementRect(296,94,126,408),
                     elementRect(296,94,106,358))}">
-                <img src="${path}/text.png">
+                <img src="${path}/light.png">
+                <span class="text_a" style="${elementRect(296,94,0,0,[296,94])}">速激情</span>
+                <span class="text_b" style="${elementRect(296,50,210,30,[296,94])}">操控</span>
+                <span class="text_c" style="${elementRect(296,35,0,70,[296,94])}">无穷驾驶乐趣，应手，得心</span>
             </div>
             <div class="el number1 anime number" 
                 style="${IF_TEMPLATE(ss, 
@@ -45,6 +48,12 @@ export function show($page) {
                 $page.find('.shift')
                     .removeClass('box-unfold')
                     .addClass('box-fold')
+                    .hide();
+
+                $page.find('.shift .child-wrap')
+                    .remove()
+                    .children()
+                    .appendTo($page.find('.shift'));
             });
         }).then(function() {
             return animation.get('.shift').animate({
@@ -58,6 +67,12 @@ export function show($page) {
                 $page.find('.shift')
                     .removeClass('box-fold')
                     .addClass('fade-in')
+                    .hide();
+
+                $page.find('.shift .child-wrap')
+                    .remove()
+                    .children()
+                    .appendTo($page.find('.shift'));
             });
         }).then(function() {
             return animation.get('.shift').animate({

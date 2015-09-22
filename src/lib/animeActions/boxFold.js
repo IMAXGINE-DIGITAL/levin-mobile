@@ -70,6 +70,10 @@ export function get($element, options) {
             var left = originX * i2;
             var top = originY * i2;
 
+            $element.css({
+                display: 'block'
+            });
+
             $wrap.css({
                 width: width + 'px',
                 height: height + 'px',

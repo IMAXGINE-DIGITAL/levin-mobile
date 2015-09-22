@@ -1,4 +1,4 @@
-import './page_a.less';
+import './page_ag.less';
 import $ from 'jquery';
 import {
     Promise, defer
@@ -32,8 +32,16 @@ export function render({IF_TEMPLATE}) {
                 elementRect(438,212,112,364))}">
             <img src="${path}/text1.png" />
         </div>
-        <div class="el text2 anime fade-in" style="${elementRect(363,178,33,913)}">
-            <img src="${path}/text2.png" />
+        <div class="el text2 anime fade-in text-wrap" style="${elementRect(700,228,33,913)}">
+            <img src="${path}/bar.png" />
+            <span class="text_a" style="${elementRect(700,80,30,0,[700,228])}">周全呵护</span>
+            <span class="text_b" style="${elementRect(700,60,30,90,[700,228])}">出发，然后从容到达</span>
+            <span class="text_c" style="${elementRect(700,50,30,140,[700,228])}">
+                雷凌配置顶级安全系统，让向前的每一步都从容。
+            </span>
+            <span class="text_c" style="${elementRect(700,50,30,170,[700,228])}">
+                车体结构更坚固，主动安全和被动安全的设置更周全。
+            </span>
         </div>
     `;
 }

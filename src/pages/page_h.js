@@ -11,8 +11,13 @@ export function render() {
     return `
         <div class="wrap">
             <div class="bg"><img src="${path}/bg.jpg"></div>
-            <div class="el text anime fade-in" style="${elementRect(597,65,22,233)}">
-                <img src="${path}/text.gif">
+            <div class="el text anime fade-in text-wrap" style="${elementRect(640,113,22,210)}">
+                <span class="text_a" style="${elementRect(620,40,0,5,[640,113])}">
+                    博世第9代ABS+EBD+EBA+TRC+VSC主动安全系统
+                </span>
+                <span class="text_b" style="${elementRect(550,40,0,45,[640,113])}">
+                    先进的安全驾驶系统，并对刹车系统定向调教，实现最佳制动感。
+                </span>
             </div>
         </div>
     `;

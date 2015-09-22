@@ -27,8 +27,8 @@ export function render() {
                 <img src="${path}/car2.jpg" />
             </div>
 
-            <div class="el text anime fade-in" style="${elementRect(528,74,28,946)}">
-                <img src="${path}/text.png" />
+            <div class="el text anime fade-in text-wrap" style="${elementRect(528,74,28,946)}">
+                <span class="text_a" style="${elementRect(528,74,0,0,[528,74])}">准备万全，才够安全</span>
             </div>
         </div>
     `;

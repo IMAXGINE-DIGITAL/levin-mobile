@@ -29,7 +29,7 @@ function imagelist(filepath) {
             return;
         }
         
-        if (file.stat.isFile()) {
+        if (file.stat.isFile() && !file.path.match(/\.ignore$/)) {
             list.push(path.relative(cwd, file.path));
         }
 
