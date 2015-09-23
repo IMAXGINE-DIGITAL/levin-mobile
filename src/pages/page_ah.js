@@ -19,13 +19,14 @@ export function render({IF_TEMPLATE}) {
     var ss = window.fixSmallScreen;
 
     return `
-        <div class="el bg" style="${elementRect(640,1136,0,0)}">
-            <img src="${path}/bg.jpg"/>
+        <div class="bg"><img src="${path}/bg.jpg"/></div>
+        <div class="el car anime slide-in" style="${elementRect(902,272,-131,735)}">
+            <img src="${path}/car.png"/>
         </div>
-        <div class="el lg1 rotate" style="${elementRect(96,96,445,876)}">
+        <div class="el lg1 rotate anime slide-in" style="${elementRect(96,96,445,851)}">
             <img src="${path}/lg.png"/>
         </div>
-        <div class="el lg2 rotate" style="${elementRect(96,96,58,876)}">
+        <div class="el lg2 rotate anime slide-in" style="${elementRect(96,96,58,843)}">
             <img src="${path}/lg1.png"/>
         </div>
         <div class="el dl anime box-unfold" style="${elementRect(756,154,0,746)}">
@@ -51,22 +52,43 @@ export function show($page) {
     var animation = $page.animation();
     
     return animation.then(function(item) {
-        return animation.get('.dl').animate({
-                delay: 400,
-                duration:400,
-                'box-unfold':{
-                    origin: ['100%', 0], 
-                    angle:0
-                }
-            })
-        })
-        .then(function(item){
-           return animation.get('.text').animate({
-                delay: 400,
-                duration:400
-            })
-             
-        })
-
-        
+            return Promise.all([
+                animation.get('.car').animate({
+                    duration: 400,
+                    'slide-in': {
+                        from: 'left',
+                        offset: '100%'
+                    }
+                }),
+                animation.get('.lg1').animate({
+                    duration: 400,
+                    'slide-in': {
+                        from: 'left',
+                        offset: '100%'
+                    }
+                }),
+                animation.get('.lg2').animate({
+                    duration: 400,
+                    'slide-in': {
+                        from: 'left',
+                        offset: '100%'
+                    }
+                })
+            ]);
+        }).then(function(){
+            return Promise.all([
+                animation.get('.dl').animate({
+                    delay: 400,
+                    duration:400,
+                    'box-unfold':{
+                        origin: ['100%', 0], 
+                        angle:0
+                    }
+                }),
+                animation.get('.text').animate({
+                    delay: 400,
+                    duration:400
+                })
+            ]);
+        });
 }
