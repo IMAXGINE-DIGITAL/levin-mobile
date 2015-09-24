@@ -5,6 +5,54 @@ import {transition} from './util';
 
 var queue = Promise.resolve();
 
+function animation(curname, lastname, $pageRoot) {
+    var curpage = page.get(curname);
+    var lastpage = page.get(lastname);
+
+    if (lastpage) {
+        var top = page.indexOf(curname) > page.indexOf(lastname) ? 100 : -100;
+
+        return Promise
+            .all([curpage.root(), lastpage.root()])
+            .then(function([$curRoot, $lastRoot]) {
+                $curRoot.css({
+                    display: 'block',
+                    top: top + '%'
+                });
+
+                return new Promise(function(resolve, reject) {
+                    transition($pageRoot[0], {
+                        top: -top + '%'
+                    }, {
+                        prop: 'top',
+                        duration: 700,
+                        timingFunction: 'ease',
+                        delay: 0,
+                        complete: function() {
+                            $lastRoot.css({
+                                display: 'none'
+                            });
+                            $curRoot.css({
+                                top: ''
+                            });
+                            $pageRoot.css({
+                                top: ''
+                            });
+                            resolve();
+                        }
+                    });
+                });
+            });
+    } else {
+        return curpage.root()
+            .then(function($root) {
+                $root.css({
+                    display: 'block'
+                });
+            });
+    }   
+}
+
 export function scroll($pageRoot, name) {
     var init = Promise.resolve();
 
@@ -15,67 +63,21 @@ export function scroll($pageRoot, name) {
     queue = Promise.all([init, queue])
         .then(function(ret) {
             var curpage = page.get(name);
+            var lastpage = page.get(ret[1]);
 
-            var lastname = ret[1];
-            if (lastname) {
-                var lastpage = page.get(lastname);
-                var sign = page.indexOf(name) > page.indexOf(lastname) ? 1 : -1;
-
-                curpage.$root.css({
-                    display: 'block',
-                    top: sign * 100 + '%'
+            return curpage.render()
+                .then(function() {
+                    return animation(name, ret[1], $pageRoot);
                 });
-                
-                return new Promise(function(resolve, reject) {
-                    transition($pageRoot[0], {
-                        top: (-sign * 100) + '%'
-                    }, {
-                        prop: 'top',
-                        duration: 700,
-                        timingFunction: 'ease',
-                        delay: 0,
-                        complete: function() {
-                            lastpage.$root.css({
-                                display: 'none'
-                            });
-                            curpage.$root.css({
-                                top: ''
-                            });
-                            $pageRoot.css({
-                                top: ''
-                            });
-                            resolve();
-                        }
-                    });
-
-                    // $pageRoot.animate({
-                    //     top: (-100 * sign) + '%'
-                    // }, {
-                    //     duration: 700,
-                    //     complete: function() {
-                    //         lastpage.$root.css({
-                    //             display: 'none'
-                    //         });
-                    //         curpage.$root.css({
-                    //             top: ''
-                    //         });
-                    //         $pageRoot.css({
-                    //             top: ''
-                    //         });
-                    //         resolve();
-                    //     }
-                    // });
+        }).then(function() {
+            var promise = page.show(name);
+            if (name === 'home') {
+                return promise.then(function() {
+                    return name;
                 });
             } else {
-                curpage.$root.css({
-                    display: 'block'
-                });
+                return name;
             }
-        })
-        .then(function() {
-            return page.show(name);
-        }).then(function() {
-            return name;
         });
 
     return queue;

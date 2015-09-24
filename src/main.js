@@ -79,6 +79,12 @@ page.ready().then(function ($pageRoot) {
         return deferred.promise;
     }
 
+    function debuggerLog(name) {
+        if (location.search.indexOf('debug') > 0) {
+            console.debug(name);
+            location.replace('#' + name);
+        }
+    }
 
     function circle(curName) {
         Promise.race([
@@ -97,10 +103,7 @@ page.ready().then(function ($pageRoot) {
             }
 
             if (name && name !== curName) {
-                if (location.search.indexOf('debug') > 0) {
-                    console.debug(name);
-                    location.replace('#' + name);
-                }
+                debuggerLog(name);
                 return pagescroll.scroll($pageRoot, name);
             } else {
                 return curName;
@@ -118,6 +121,7 @@ page.ready().then(function ($pageRoot) {
     var name = getHashName();
     pagescroll.scroll($pageRoot, 'home').then(function() {
         if (name !== 'home') {
+            debuggerLog(name);
             return pagescroll.scroll($pageRoot, name);
         } else {
             return name;

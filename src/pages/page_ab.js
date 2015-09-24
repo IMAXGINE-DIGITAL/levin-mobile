@@ -20,7 +20,7 @@ export function render() {
 
     return `
         <div class="wrap">
-            <div class="el car anime slide-in" style="${elementRect(1000,1136,0,0)}">
+            <div class="bg" style="${elementRect(1000,1136,0,0)}">
                 <img src="${path}/car-total.jpg" />
             </div>
             <div class="el gray anime fade-in" style="${elementRect(640,1136,0,-2)}">
@@ -47,13 +47,14 @@ export function show($page) {
     var animation = $page.animation();
 
     return animation.then(function() {
-            return animation.get('.car').animate({
-                duration: 1200,
-                'slide-in': {
-                    offset: '56.25%',
-                    from: 'left'
-                }
-            })
+            // $page.find('.car').addClass('slide-in');
+            // return animation.get('.car').animate({
+            //     duration: 1200,
+            //     'slide-in': {
+            //         offset: '56.25%',
+            //         from: 'left'
+            //     }
+            // })
         }).then(function() {
             return animation.get('.gray').animate({
                 duration: 400,

@@ -37,59 +37,140 @@ export function add(name) {
         return;
     }
 
-    var $root = $(`<div id="${name}" class="page"></div>`);
-    var $html = $(page.render({
-        IF_TEMPLATE: $IF_TEMPLATE
-    }));
-    var renderPromise = [];
+    function render() {
+        return ready().then(function($pages) {
+            $pages.find(`#${name}`).remove();
+            var $root = $(`<div id="${name}" class="page"></div>`);
+            var $html = $(page.render({
+                IF_TEMPLATE: $IF_TEMPLATE
+            }));
 
-    $html.find('img').each(function() {
-        var $img = $(this);
-        var src = getUrl($img.attr('src'));
-        if (!src.match(/^data:image/)) {
+            var promises = [];
 
-            $img.attr('src', placeHolderImg);
+            $html.find('img').each(function() {
+                var $img = $(this);
+                var src = getUrl($img.attr('src'));
+                if (!src.match(/^data:image/) && 
+                    $img.attr('preload') !== 'false') {
 
-            var promise = preload.getImage(src)
-                .then(function(image) {
-                    return $img.replaceWith(image);
-                })['catch'](function(e) {
-                    return new Promise(function(resolve) {
-                        $img.on('load', function handle() {
-                            $img.off('load', handle);
-                            resolve();
-                        }).attr('src', 'src')
-                    });
-                });
+                    $img.attr('src', placeHolderImg);
 
-            if (name !== 'home') {
-                renderPromise.push(promise);
-            }
-        }
-    });
+                    var promise = preload.getImage(src)
+                            .then(function(image) {
+                                return $img.replaceWith(image);
+                            })['catch'](function(e) {
+                                return new Promise(function(resolve) {
+                                    $img.on('load', function handle() {
+                                        $img.off('load', handle);
+                                        resolve();
+                                    }).attr('src', 'src')
+                                });
+                            });
 
-    $root.append($html);
+                    if (name !== 'home') {
+                        promises.push(promise);
+                    }
+                }
+            });
 
-    var shown;
+            $root.append($html);
+            $pages.append($root);
+
+            return Promise.all(promises).then(function() {
+                return $root;
+            });
+        });
+    }
+
+    // var shown;
+    var rootDeferred;
     pages[name] = {
-        $root: $root,
+        root: function() {
+            return rootDeferred.promise;
+        },
+        render: function() {
+            rootDeferred = defer();
+
+            return render().then(function($root) {
+                rootDeferred.resolve($root);
+            });
+
+            return rootDeferred.promise;
+        },
         show: function() {
-            if (!shown) {
-                shown = Promise.all(renderPromise).then(function() {
+            return rootDeferred.promise
+                .then(function($root) {
                     return page.show($root);
                 });
-            }
-            return shown;
         }
     };
 
-    ready().then(function($pages) {
-        $pages.find('.page_wrap').append($root);
-        deferred.resolve();
-    });
-
+    deferred.resolve();
     return deferred.promise;
 }
+
+// export function add(name) {
+//     var page = require('../pages/' + name);
+//     var deferred = defer();
+
+//     if (!page) {
+//         deferred.reject();
+//         return;
+//     }
+
+//     var $root = $(`<div id="${name}" class="page"></div>`);
+//     var $html = $(page.render({
+//         IF_TEMPLATE: $IF_TEMPLATE
+//     }));
+//     var renderPromise = [];
+
+//     $html.find('img').each(function() {
+//         var $img = $(this);
+//         var src = getUrl($img.attr('src'));
+//         if (!src.match(/^data:image/)) {
+
+//             $img.attr('src', placeHolderImg);
+
+//             var promise = preload.getImage(src)
+//                 .then(function(image) {
+//                     return $img.replaceWith(image);
+//                 })['catch'](function(e) {
+//                     return new Promise(function(resolve) {
+//                         $img.on('load', function handle() {
+//                             $img.off('load', handle);
+//                             resolve();
+//                         }).attr('src', 'src')
+//                     });
+//                 });
+
+//             if (name !== 'home') {
+//                 renderPromise.push(promise);
+//             }
+//         }
+//     });
+
+//     $root.append($html);
+
+//     var shown;
+//     pages[name] = {
+//         $root: $root,
+//         show: function() {
+//             if (!shown) {
+//                 shown = Promise.all(renderPromise).then(function() {
+//                     return page.show($root);
+//                 });
+//             }
+//             return shown;
+//         }
+//     };
+
+//     ready().then(function($pages) {
+//         $pages.find('.page_wrap').append($root);
+//         deferred.resolve();
+//     });
+
+//     return deferred.promise;
+// }
 
 export function get(name) {
     return pages[name];

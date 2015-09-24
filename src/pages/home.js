@@ -24,13 +24,13 @@ export function render({IF_TEMPLATE}) {
         <div class="el logo anime zoom" 
             style="${IF_TEMPLATE(ss,
                         elementRect(440,69,106,473),
-                        elementRect(440,69,106,283))}">
+                        elementRect(440,69,106,343))}">
             <img src="${logoImg}" />
         </div>
         <div class="el light anime box-unfold" 
             style="${IF_TEMPLATE(ss,
                 elementRect(264,43,82,499),
-                elementRect(264,43,82,309))}">
+                elementRect(264,43,82,369))}">
             <img src="${lightImg}" />
         </div>
         <div class="el left-btn anime fade-in" style="${elementRect(269,407,0,729)}">
@@ -75,7 +75,7 @@ export function show($page) {
                 angle: 0
             });
 
-        var complete = 50;
+        var complete = 100;
 
         return Promise.race([
             new Promise(function(resolve, reject) {
