@@ -42,7 +42,7 @@ export function render({IF_TEMPLATE}) {
             <div class="el seat-back2 anime fade-in" style="${elementRect(322,474,292,399)}">
                 <img src="${path}/seat-back2.png">
             </div>
-            <div class="el text1 anime box-unfold text-wrap" style="${elementRect(459,187,41,283)}">
+            <div class="el text1 anime box-unfold text-wrap" style="${elementRect(459,187,41,243)}">
                 <img src="${path}/light.png">
                 <span class="text_c number-text" style="${elementRect(459,120,0,0,[459,187])}">6</span>
                 <span class="text_d" style="${elementRect(459,120,90,50,[459,187])}">向电动调节座椅</span>

@@ -27,7 +27,7 @@ export function render({IF_TEMPLATE}) {
             <span class="text_a" style="${elementRect(263,52,0,62,[600,152])}">
                 比普通天窗大
             </span>
-            <span class="text_b number-text" style="${elementRect(201,105,270,30,[600,152])}">
+            <span class="text_b anime number number-text" style="${elementRect(201,105,270,30,[600,152])}">
                 15%
             </span>
             <span class="text_c" style="${elementRect(608,34,0,129,[600,152])}">
@@ -71,16 +71,30 @@ export function show($page) {
             }
         });
     }).then(function(item) {
-        return animation.get('.blue2').animate({
-            duration: 300,
-            delay: 300
-        }).then(function() {
-            $page.find('.blue2').toggleClass('fade-in fade-out');
-        })
+        return Promise.all([
+            animation.get('.blue2').animate({
+                duration: 300,
+                delay: 300
+            }).then(function() {
+                $page.find('.blue2').toggleClass('fade-in fade-out');
+            }).then(function () {
+                return animation.get('.blue2').animate({
+                    duration: 300,
+                    delay: 100
+                });
+            }),
+            animation.get('.text_b').animate({
+                duration: 400,
+                delay: 100,
+                number: {
+                    from: 0,
+                    to: 15,
+                    format: '%02%01%'
+                }
+            })
+        ]);
+
     }).then(function(item) {
-        return animation.get('.blue2').animate({
-            duration: 300,
-            delay: 100
-        });
+
     });
 }

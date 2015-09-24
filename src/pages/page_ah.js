@@ -23,10 +23,10 @@ export function render({IF_TEMPLATE}) {
         <div class="el car anime slide-in" style="${elementRect(902,272,-131,735)}">
             <img src="${path}/car.png"/>
         </div>
-        <div class="el lg1 rotate anime slide-in" style="${elementRect(96,96,445,851)}">
+        <div class="el lg1 rotate anime slide-in" style="${elementRect(68,66,458,872)}">
             <img src="${path}/lg.png"/>
         </div>
-        <div class="el lg2 rotate anime slide-in" style="${elementRect(96,96,58,843)}">
+        <div class="el lg2 rotate anime slide-in" style="${elementRect(68,66,70,864)}">
             <img src="${path}/lg1.png"/>
         </div>
         <div class="el dl anime box-unfold" style="${elementRect(756,154,0,746)}">

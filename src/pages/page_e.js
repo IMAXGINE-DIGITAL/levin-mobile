@@ -17,7 +17,7 @@ export function render({IF_TEMPLATE}) {
             <img src="${path}/bg.jpg">
         </div>
         <div class="el text anime fade-in text-wrap" 
-            style="${elementRect(628,105,0,544)}">
+            style="${elementRect(628,105,0,414)}">
             <img src="${path}/light.gif"/>
             <span class="text_a" style="${elementRect(628,60,0,0,[628,105])}">
                 超长轴距
@@ -26,18 +26,21 @@ export function render({IF_TEMPLATE}) {
                 媲美B级车，在车里尽情舒展
             </span>
         </div>
+        <div class="el number1 anime fade-in" 
+            style="${elementRect(440,99,35,355)}">
+            2700mm
+        </div>
         <div class="el car1 anime box-unfold" style="${elementRect(640,256,0,762)}">
             <img src="${path}/car1.jpg"/>
         </div>
         <div class="el car2 anime box-unfold" style="${elementRect(640,256,0,762)}">
             <img src="${path}/car2.jpg"/>
         </div>
-        <div class="el number1 anime fade-in" 
-            style="${elementRect(440,99,35,485)}">
-            1660mm
-        </div>
         <div class="el ruler anime fade-in" style="${elementRect(640,80,0,1014)}">
             <img src="${path}/ruler.png"/>
+        </div>
+        <div class="el number2 anime fade-in text-wrap" style="${elementRect(290,40,250,940)}">
+            <span class="text_c anime number">1660mm</span>
         </div>
         <div class="el range anime fade-in" style="${elementRect(285,68,289,983)}">
             <input type="range" value="0" min="0" max="100"/>
@@ -77,7 +80,7 @@ export function show($page) {
                         angle: 0
                     });
 
-            var numberAction = animation.get('.number1')
+            var numberAction = animation.get('.number2 span')
                     .action('number', {
                         from: 1660,
                         to: 2700,
@@ -100,6 +103,9 @@ export function show($page) {
                         } else {
                             carAction.frame(1 - value / 100, 1 - value / 100);
                         }
+                        $page.find('.number2 span').css({
+                            left: value + '%'
+                        });
                     });
                 },
 
@@ -150,10 +156,16 @@ export function show($page) {
                 delay: 200
             });
         }).then(function(item) {
-            return animation.get('.number1').animate({
-                duration: 600,
-                delay: 200
-            });
+            return Promise.all([
+                animation.get('.number1').animate({
+                    duration: 600,
+                    delay: 200
+                }),
+                animation.get('.number2').animate({
+                    duration: 600,
+                    delay: 200
+                })
+            ]);
         }).then(function() {
             return ready.resolve();
         });

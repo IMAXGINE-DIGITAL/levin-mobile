@@ -32,7 +32,7 @@ export function render({IF_TEMPLATE}) {
                 elementRect(438,212,112,364))}">
             <img src="${path}/text1.png" />
         </div>
-        <div class="el text2 anime fade-in text-wrap" style="${elementRect(700,278,33,853)}">
+        <div class="el text2 anime fade-in text-wrap" style="${elementRect(700,278,33,873)}">
             <img src="${path}/bar.png" />
             <span class="text_a" style="${elementRect(700,80,30,30,[700,278])}">周全呵护</span>
             <span class="text_b" style="${elementRect(700,60,30,90,[700,278])}">出发，然后从容到达</span>

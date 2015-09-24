@@ -18,7 +18,7 @@ export function render({IF_TEMPLATE}) {
             <div class="bg" style="${_elementRect(1357,1136,0,0)}">
                 <img src="${path}/bg.jpg">
             </div>
-            <div class="el line1 anime box-unfold" style="${_elementRect(660,629,33,160)}">
+            <div class="el line1 anime box-unfold" style="${_elementRect(660,629,33,336)}">
                 <img src="${path}/line1.png">
             </div>
             <div class="el line2 anime box-unfold" style="${_elementRect(699,41,579,387)}">
@@ -28,7 +28,7 @@ export function render({IF_TEMPLATE}) {
                 <img src="${path}/line3.png">
             </div>
             <div class="el text anime fly-in text-wrap" 
-                style="${_elementRect(435 * 0.8,150 * 0.8,530,239)}">
+                style="${_elementRect(435 * 0.8,150 * 0.8,530,189)}">
                 <span class="text_a" 
                     style="${elementRect(325 * 0.8,108 * 0.8,0,0,[435 * 0.8,150 * 0.8])}">
                     高质感

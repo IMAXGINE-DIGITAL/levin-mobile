@@ -26,9 +26,9 @@ export function get($element, options) {
         top: 0
     });
 
-    var $wrap = $element.find('.wrap')
+    var $wrap = $element.find('.el-wrap')
     if (!$wrap.length) {
-        $wrap = $('<div class="wrap"></div>');
+        $wrap = $('<div class="el-wrap"></div>');
         $wrap.appendTo($element);
     }
     $wrap.append($childwrap);

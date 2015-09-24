@@ -15,7 +15,7 @@ export function render() {
             <div class="bg" style="${elementRect(640,1136,0,0)}">
                 <img src="${path}/bg.jpg" />
             </div>
-            <div class="el car anime zoom" style="${elementRect(100,67,264,670)}">
+            <div class="el car anime zoom" style="${elementRect(300,201,164,603)}">
                 <img src="${path}/car.png" />
             </div>
 
@@ -31,7 +31,7 @@ export function render() {
                 <span class="text_a" style="${elementRect(479,70,0,0,[479,110])}">
                     我的型，我的范
                 </span>
-                <span class="text_b" style="${elementRect(479,30,0,80,[479,110])}">
+                <span class="text_b" style="${elementRect(479,30,0,60,[479,110])}">
                     够前卫，才能成为路上的焦点！
                 </span>
             </div>
@@ -50,7 +50,7 @@ export function show($page) {
             delay: 200,
             'zoom': {
                 from: '100%',
-                to: '750%'
+                to: '250%'
             }
         });
     })

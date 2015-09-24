@@ -14,7 +14,7 @@ export function render() {
             <div class="el shadow anime fade-in" style="${elementRect(427,158,121,964)}">
                 <img src="${path}/shadow.jpg">
             </div>
-            <div class="el engine anime fly-in" style="${elementRect(316,309,170,737)}">
+            <div class="el engine anime fly-in" style="${elementRect(316 * 0.6,309 * 0.6,240,837)}">
                 <img src="${path}/engine.png">
             </div>
             <div class="el table anime fade-in" style="${elementRect(588,187,20,352)}">
@@ -41,9 +41,9 @@ export function render() {
             <div class="el number2 anime number" style="${elementRect(93,58,358,602)}">
                 6.1
             </div>
-            <div class="el text anime fade-in text-wrap" style="${elementRect(300,134,200,800)}">
+            <div class="el text anime fade-in text-wrap" style="${elementRect(300,134,210,700)}">
                 <span class="text_a" style="${elementRect(300,80,0,0,[300,134])}">超低油耗</span>
-                <span class="text_b" style="${elementRect(300,40,0,90,[300,134])}">说走就走，没有后顾之忧</span>
+                <span class="text_b" style="${elementRect(300,40,0,70,[300,134])}">说走就走，没有后顾之忧</span>
             </div>
         </div>
     `;
