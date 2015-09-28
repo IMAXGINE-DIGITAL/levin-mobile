@@ -26,12 +26,26 @@ export function show($page) {
             overflow: 'hidden'
         });
 
-    var $formT = $contentDoc.find('.formT');
-    var paddingTop = ($contentDoc.height() - $formT.height()) / 2;
+    // var $formT = $contentDoc.find('.formT');
+    // $formT.css({
+    //     position: 'absolute',
+    //     marginLeft: '10%',
+    //     bottom: 5
+    // });
 
-    $formT.css({
-        margin: 'auto',
-        paddingTop: Math.max(50, paddingTop)
-    });
+    // if (!!window.navigator.userAgent.match(/iPhone/)) {
+
+    // }
+
+    // var top = ($contentDoc.height() - $formT.height()) / 2
+    // $contentDoc.find('body').css({
+    //     paddingTop: top * 2
+    // });
+    // $formT.css({
+    //     position: 'absolute',
+    //     marginLeft: '10%'
+    //     // margin: 'auto',
+    //     // paddingTop: Math.max(50, paddingTop)
+    // });
 
 }
