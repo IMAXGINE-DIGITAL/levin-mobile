@@ -26,7 +26,7 @@ export function render() {
             <div class="el gray anime fade-in" style="${elementRect(640,1136,0,-2)}">
                 <img src="${path}/gray.jpg" />
             </div>
-            <div class="el logo anime box-unfold" style="${elementRect(145,31,95,411)}">
+            <div class="el logo anime box-unfold" style="${elementRect(145,31,95,411.5)}">
                 <img src="${path}/logo.png"/>
             </div>
             <div class="el car-light anime fade-in" style="${elementRect(640,1136,0,-2)}">

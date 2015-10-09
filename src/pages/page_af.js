@@ -27,7 +27,7 @@ export function render({IF_TEMPLATE}) {
             <div class="el car anime fade-in" style="${elementRect(616,341,8,568)}">
                 <img src="${path}/car.png" />
             </div>
-            <div class="el text1 anime fade-in text-wrap" 
+            <div class="el text1 anime fly-in text-wrap" 
                 style="${elementRect(780,130,16,381)}">
                 <span class="text_a" style="${elementRect(780,70,0,0,[780,130])}">
                     享誉全球的丰田独有GOA车身
@@ -37,7 +37,7 @@ export function render({IF_TEMPLATE}) {
                     其中，门内防撞杆梁的抗拉强度高达1470兆帕，同级罕见。
                 </span>
             </div>
-            <div class="el text2 anime fade-in" style="${elementRect(323,139,305,992)}">
+            <div class="el text2 anime fly-in" style="${elementRect(323,139,305,992)}">
                 <img src="${path}/text2.png" />
             </div>
         </div>
@@ -54,12 +54,18 @@ export function show($page) {
         })
     }).then(function() {
         return animation.get('.text1').animate({
-            duration: 400
+            duration: 400,
+            'fly-in': {
+                from: 'bottom'
+            }
         });
     })
     .then(function() {
         return animation.get('.text2').animate({
-            duration: 400
+            duration: 400,
+            'fly-in': {
+                from: 'bottom'
+            }
         });
     })
 

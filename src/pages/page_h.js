@@ -11,7 +11,7 @@ export function render() {
     return `
         <div class="wrap">
             <div class="bg"><img src="${path}/bg.jpg"></div>
-            <div class="el text anime fade-in text-wrap" style="${elementRect(640,200,22,170)}">
+            <div class="el text anime fly-in text-wrap" style="${elementRect(640,200,22,170)}">
                 <span class="text_a" style="${elementRect(620,40,0,5,[640,200])}">
                     博世第9代ABS+EBD+EBA+TRC+VSC主动安全系统
                 </span>
@@ -29,7 +29,10 @@ export function show($page) {
     return animation.then(function(item) {
             return animation.get('.text').animate({
                 duration: 600,
-                delay: 300
+                delay: 300,
+                'fly-in': {
+                    from: 'bottom'
+                }
             });
         });
 }

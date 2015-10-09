@@ -27,7 +27,7 @@ export function render() {
                 <img src="${path}/car2.jpg" />
             </div>
 
-            <div class="el text anime fade-in text-wrap" style="${elementRect(528,74,28,946)}">
+            <div class="el text anime fly-in text-wrap" style="${elementRect(528,74,28,946)}">
                 <span class="text_a" style="${elementRect(528,74,0,0,[528,74])}">准备万全，才够安全</span>
             </div>
         </div>
@@ -52,7 +52,10 @@ export function show($page) {
         });
     }).then(function() {
         return animation.get('.text').animate({
-            duration: 400
+            duration: 400,
+            'fly-in': {
+                from: 'bottom'
+            }
         });
     })
 

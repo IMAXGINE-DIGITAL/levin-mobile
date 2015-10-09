@@ -96,12 +96,38 @@ export function show($page) {
 
                 // Callback function
                 onSlide: function(position, value) {
+                    if (slideCompelte) {
+                        $page.find('.car2')
+                            .removeClass('box-fold')
+                            .addClass('fade-in');
+
+                        ready = defer();
+
+                        animation.get('.car2').animate({
+                            duration: 600
+                        }).then(function() {
+                            $page.find('.car1').show();
+
+                            $page.find('.car2')
+                                .removeClass('fade-in')
+                                .addClass('box-unfold');
+
+                            carAction = animation.get('.car2')
+                                .action('box-unfold', {
+                                    origin: [0, 0],
+                                    angle: 0
+                                });
+
+                            carAction.frame(1, 1);
+
+                            ready.resolve();
+                        });
+
+                        slideCompelte = false;
+                    }
+
                     ready.promise.then(function() {
-                        if (!slideCompelte) {
-                            carAction.frame(value / 100, value / 100);
-                        } else {
-                            carAction.frame(1 - value / 100, 1 - value / 100);
-                        }
+                        carAction.frame(value / 100, value / 100);
                         numberAction.frame(value / 100, value / 100);
                         $page.find('.number2 span').css({
                             left: value + '%'
@@ -111,15 +137,11 @@ export function show($page) {
 
                 // Callback function
                 onSlideEnd: function(position, value) {
-                    if (slideCompelte) return;
-
                     ready.promise.then(function() {
                         if (value === 100) {
                             slideCompelte = true;
 
-                            carAction.done();
-
-                            $page.find('.car1').hide();                            
+                            $page.find('.car1').hide();                           
 
                             $page.find('.car2')
                                 .removeClass('box-unfold')
@@ -133,15 +155,8 @@ export function show($page) {
                                     angle: 0
                                 }
                             }).then(function() {
-                                $page.find('.car2')
-                                    .removeClass('box-fold')
-                                    .addClass('box-unfold');
-
-                                carAction = animation.get('.car2')
-                                    .action('box-unfold', {
-                                        origin: ['100%', 0],
-                                        angle: 0
-                                    });
+                                $page.find('.car2').hide();
+                                carAction.frame(0, 0);
                             });
                         }
                     });

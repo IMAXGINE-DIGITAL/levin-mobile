@@ -16,7 +16,7 @@ export function render() {
             <div class="el wind anime box-unfold" style="${elementRect(1568,454,-350,494)}">
                 <img src="${path}/wind.png">
             </div>
-            <div class="el text anime fade-in text-wrap" style="${elementRect(589,140,18,875)}">
+            <div class="el text anime fly-in text-wrap" style="${elementRect(589,140,18,875)}">
                 <span class="text_a" style="${elementRect(589,95,0,0,[589,140])}">
                     高性能空调滤芯
                 </span>
@@ -42,7 +42,10 @@ export function show($page) {
         }).then(function(item) {
             return animation.get('.text').animate({
                 duration: 600,
-                delay: 300
+                delay: 300,
+                'fly-in': {
+                    from: 'bottom'
+                }
             });
         });
 }

@@ -53,7 +53,7 @@ export function show($page) {
     });
 
     $page.find('.left-btn').on('tap', function() {
-        // TODO
+        $(document).trigger('pagechange', 'page_z');
     });
 
     $page.find('.right-btn').on('tap', function() {
@@ -132,7 +132,9 @@ export function show($page) {
             delay: 200,
             flash: {
                 loop: Infinity,
-                interval: 800
+                interval: 2000,
+                opacityStart: 1,
+                opacityEnd: 0.2
             }
         })
     });

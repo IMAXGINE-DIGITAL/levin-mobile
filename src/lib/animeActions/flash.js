@@ -23,16 +23,16 @@ export default function flash($element, options) {
             var flashOpt = options['flash'] || {};
             var loop = flashOpt.loop || 2;
             var interval = flashOpt.interval || 200;
-
+            var opacityStart = flashOpt.opacityStart || 1;
+            var opacityEnd = flashOpt.opacityEnd || 0; 
             function blink() {
                 $element.css({
-                    display: 'block',
-                    opacity: 0
+                    opacity: opacityStart
                 });
 
-                return (new Promise(function(resolve, reject) {
+                return new Promise(function(resolve, reject) {
                     transition($element[0], {
-                        opacity: 1
+                        opacity: opacityEnd
                     }, {
                         prop: 'opacity',
                         duration: interval / 2,
@@ -40,15 +40,14 @@ export default function flash($element, options) {
                         delay: 0,
                         complete: resolve
                     });
-                })).then(function() {
+                }).then(function(){
                     $element.css({
-                        display: 'block',
-                        opacity: 1
+                        opacity: opacityEnd
                     });
 
-                    return (new Promise(function(resolve, reject) {
+                    return new Promise(function(resolve, reject) {
                         transition($element[0], {
-                            opacity: 0
+                            opacity: opacityStart
                         }, {
                             prop: 'opacity',
                             duration: interval / 2,
@@ -56,34 +55,20 @@ export default function flash($element, options) {
                             delay: 0,
                             complete: resolve
                         });
-                    }));
+                    });
                 });
-
-                // return fa(interval / 2, 
-                //     options.timingFunction || 'easeIn',
-                //     function(i1, i2) {
-                //         $element.css({
-                //             opacity: 1 * i2
-                //         });
-                //     }
-                // ).play()
-                // .then(function() {
-                //     return fa(interval / 2, 
-                //         options.timingFunction || 'easeIn',
-                //         function(i1, i2) {
-                //             $element.css({
-                //                 opacity: 1 * (1 - i2)
-                //             });
-                //         }
-                //     ).play();
-                // });
             }
 
             return ready.then(function() {
+                $element.css({
+                    display: 'block'
+                });
+
                 if (loop === Infinity) {
                     void function circle() {
                         blink().then(circle);
                     }();
+
                     return true;
                 } else {
                     var promise = blink();

@@ -26,13 +26,13 @@ export function render({IF_TEMPLATE}) {
         <div class="el car2 anime fade-in" style="${elementRect(640,1136,0,0)}">
             <img src="${path}/car2.jpg" />
         </div>
-        <div class="el text1 anime fade-in" 
+        <div class="el text1 anime fly-in" 
             style="${IF_TEMPLATE(ss, 
                 elementRect(438 * 0.5,212 * 0.5,20,504),
                 elementRect(438,212,112,364))}">
             <img src="${path}/text1.png" />
         </div>
-        <div class="el text2 anime fade-in text-wrap" style="${elementRect(700,278,33,873)}">
+        <div class="el text2 anime fly-in text-wrap" style="${elementRect(700,278,33,873)}">
             <img src="${path}/bar.png" />
             <span class="text_a" style="${elementRect(700,80,30,30,[700,278])}">周全呵护</span>
             <span class="text_b" style="${elementRect(700,60,30,90,[700,278])}">出发，然后从容到达</span>
@@ -55,13 +55,19 @@ export function show($page) {
             })
         }).then(function() {
             return animation.get('.text1').animate({
-                duration: 700
+                duration: 700,
+                'fly-in': {
+                    from: 'bottom'
+                }
             });
         })
         .then(function() {
             return animation.get('.text2').animate({
                 delay: 300,
-                duration: 700
+                duration: 700,
+                'fly-in': {
+                    from: 'bottom'
+                }
             });
         })
 }

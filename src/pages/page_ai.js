@@ -22,7 +22,7 @@ export function render({IF_TEMPLATE}) {
         <div class="el bg" style="${elementRect(640,1136,0,0)}">
             <img src="${path}/bg.jpg"/>
         </div>
-        <div class="el text anime fade-in text-wrap" 
+        <div class="el text anime fly-in text-wrap" 
             style="${IF_TEMPLATE(ss, 
                 elementRect(517,117,8,549),
                 elementRect(517,117,8,349))}">
@@ -44,7 +44,10 @@ export function show($page) {
     return animation.then(function(item) {
         return animation.get('.text').animate({
                 delay: 400,
-                duration:400
+                duration:400,
+                'fly-in': {
+                    from: 'bottom'
+                }
             })
         })
         

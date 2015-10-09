@@ -44,12 +44,15 @@ export function transition(element, value, properties) {
     }
 
     function resolveHandler() {
+        if (resolved) return;
+        resolved = true;
+
         element.removeEventListener('webkitTransitionEnd', resolveHandler);
         element.removeEventListener('transitionend', resolveHandler);
         for (var key in styles) {
             element.style[key] = '';
         }
-        !resolved && (resolved = true) && properties.complete();
+        properties.complete();
     }
 
     element.addEventListener('webkitTransitionEnd', resolveHandler);
