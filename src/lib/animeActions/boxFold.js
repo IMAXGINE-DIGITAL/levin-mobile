@@ -27,9 +27,9 @@ export function get($element, options) {
         top: 0
     });
 
-    var $wrap = $element.find('.wrap')
+    var $wrap = $element.find('.el-wrap')
     if (!$wrap.length) {
-        $wrap = $('<div class="wrap"></div>');
+        $wrap = $('<div class="el-wrap"></div>');
         $wrap.appendTo($element);
     }
     $wrap.append($childwrap);
@@ -69,6 +69,10 @@ export function get($element, options) {
             
             var left = originX * i2;
             var top = originY * i2;
+
+            $element.css({
+                display: 'block'
+            });
 
             $wrap.css({
                 width: width + 'px',
