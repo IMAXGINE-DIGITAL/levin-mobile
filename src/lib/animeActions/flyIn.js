@@ -57,10 +57,10 @@ export default function flyIn($element, options) {
                     });
                 }));
             }).then(function() {
-                $children.css({
-                    display: 'block'
-                }).appendTo($element);
-                $wrap.remove();
+                // $children.css({
+                //     display: 'block'
+                // }).appendTo($element);
+                // $wrap.remove();
             });
 
             return ready;

@@ -20,7 +20,7 @@ export function render({IF_TEMPLATE}) {
     var ss = window.fixSmallScreen;
 
     return `
-        <div class="bg"}">
+        <div class="bg">
             <img src="${path}/bg.jpg" />
         </div>
         <div class="wrap">

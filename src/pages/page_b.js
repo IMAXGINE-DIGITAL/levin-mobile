@@ -50,6 +50,7 @@ export function render({IF_TEMPLATE}) {
 
 function animeLeft(el, style, duration) {
     return new Promise(function(resolve, reject) {
+        console.log(el, style)
         el.animate({
             left: style
         }, {
@@ -62,13 +63,14 @@ function animeLeft(el, style, duration) {
 
 export function show($page) {
     var animation = $page.animation();
+    console.log($page);
 
-    animeLeft = animeLeft.bind(this, $page.find('.wrap'));
+    var anime = animeLeft.bind(this, $page.find('.wrap'));
     
     return animation.then(function(){
-        return animeLeft('-112.03%', 2000)
+        return anime('-112.03%', 2000)
             .then(function() {
-                return animeLeft('-38.59%', 1200);
+                return anime('-38.59%', 1200);
             });
     }).then(function() {
         return animation.get('.line1').animate({

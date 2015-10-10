@@ -49,12 +49,12 @@ function animeLeft(el, style, duration) {
 export function show($page) {
     var animation = $page.animation();
     
-    animeLeft = animeLeft.bind(this, $page.find('.bg-wrap'));
+    var anime = animeLeft.bind(this, $page.find('.bg-wrap'));
 
     return animation.then(function(item) {
-            return animeLeft('-150%', 2000)
+            return anime('-150%', 2000)
                 .then(function() {
-                    return animeLeft('-100.3%', 1200);
+                    return anime('-100.3%', 1200);
                 });
         }).then(function() {
             return animation.get('.bag').animate({

@@ -1,20 +1,10 @@
 import './page_ag.less';
 import $ from 'jquery';
-import {
-    Promise, defer
-}
-from '../lib/promise';
+import {Promise, defer} from '../lib/promise';
 import * as page from '../lib/page';
-import {
-    elementRect
-}
-from '../lib/util';
+import {elementRect} from '../lib/util';
 import '../lib/animation';
-/**
- * 400 × 269
- *                 <div class="el car anime zoom" style="${elementRect(640,430,-20,460)}">
 
- */
 export function render({IF_TEMPLATE}) {
     var path = 'images/page_ag';
     var ss = window.fixSmallScreen;
@@ -46,9 +36,9 @@ export function render({IF_TEMPLATE}) {
 
 export function show($page) {
     var animation = $page.animation();
+    console.log($page);
 
     return animation.then(function() {
-
             return animation.get('.car2').animate({
                 duration: 600,
                 delay: 300

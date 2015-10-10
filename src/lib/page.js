@@ -74,7 +74,7 @@ export function add(name) {
             });
 
             $root.append($html);
-            $pages.append($root);
+            $pages.children().append($root);
 
             return Promise.all(promises).then(function() {
                 return $root;
