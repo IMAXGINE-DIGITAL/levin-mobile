@@ -28,17 +28,17 @@ export function render({IF_TEMPLATE}) {
                 <img src="${path}/line3.png">
             </div>
             <div class="el text anime fly-in text-wrap" 
-                style="${_elementRect(435 * 0.8,150 * 0.8,530,189)}">
+                style="${_elementRect(435 * 0.8,180 * 0.8,530,189)}">
                 <span class="text_a" 
-                    style="${elementRect(325 * 0.8,108 * 0.8,0,0,[435 * 0.8,150 * 0.8])}">
+                    style="${elementRect(325 * 0.8,108 * 0.8,0,0,[435 * 0.8,200 * 0.8])}">
                     高质感
                 </span>
                 <span class="text_b" 
-                    style="${elementRect(86 * 0.8,40 * 0.8,330 * 0.8,69 * 0.8,[435 * 0.8,150 * 0.8])}">
+                    style="${elementRect(86 * 0.8,40 * 0.8,330 * 0.8,69 * 0.8,[435 * 0.8,200 * 0.8])}">
                     内饰
                 </span>
                 <span class="text_c" 
-                    style="${elementRect(435 * 0.8,40 * 0.8,0,115 * 0.8,[435 * 0.8,150 * 0.8])}">
+                    style="${elementRect(435 * 0.8,80 * 0.8,0,115 * 0.8,[435 * 0.8,200 * 0.8])}">
                     前卫直切式中控台，宽适乘坐质感，无需妥协
                 </span>
             </div>
