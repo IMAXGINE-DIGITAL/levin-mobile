@@ -16,15 +16,15 @@ export function render() {
 }
 
 export function show($page) {
-    var contentDocument = $('#form')[0].contentDocument;
-    var $contentDoc = $(contentDocument);
+    // var contentDocument = $('#form')[0].contentDocument;
+    // var $contentDoc = $(contentDocument);
 
-    $contentDoc.find('.header, .footer').remove();
-    $contentDoc.find('html, body').css({
-            width: '100%',
-            height: '100%',
-            overflow: 'hidden'
-        });
+    // $contentDoc.find('.header, .footer').remove();
+    // $contentDoc.find('html, body').css({
+    //         width: '100%',
+    //         height: '100%',
+    //         overflow: 'hidden'
+    //     });
 
     // var $formT = $contentDoc.find('.formT');
     // $formT.css({

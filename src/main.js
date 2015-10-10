@@ -11,6 +11,14 @@ import './lib/gesture';
 import preload from './lib/preload';
 preload();
 
+window.prevPage = function() {
+    $(document).trigger('pagechange', 'prev');
+}
+
+window.nextPage = function() {
+    $(document).trigger('pagechange', 'next');
+}
+
 domReady().then(function() {
     document.addEventListener('touchmove', function(e) {
         e.preventDefault();
