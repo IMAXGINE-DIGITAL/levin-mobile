@@ -48,13 +48,13 @@ function render() {
 
 export function show() {
     ready().then(function($menu) {
-        $menu.fadeIn();
+        $menu.show();
     });
 }
 
 export function hide() {
     ready().then(function($menu) {
-        $menu.fadeOut();
+        $menu.hide();
     });
 }
 

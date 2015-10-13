@@ -13,13 +13,13 @@ export function ready() {
 
 export function show() {
     ready().then(function($nav) {
-        $nav.fadeIn();
+        $nav.show();
     });
 }
 
 export function hide() {
     ready().then(function($nav) {
-        $nav.fadeOut();
+        $nav.hide();
     });
 }
 
