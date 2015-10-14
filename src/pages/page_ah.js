@@ -20,6 +20,9 @@ export function render({IF_TEMPLATE}) {
 
     return `
         <div class="bg"><img src="${path}/bg.jpg"/></div>
+        <div class="el bg2 anime fade-in" style="${elementRect(640,446,0,690)}">
+            <img src="${path}/bg2.jpg"/>
+        </div>
         <div class="el car anime slide-in" style="${elementRect(902,272,-131,735)}">
             <img src="${path}/car.png"/>
         </div>
@@ -104,6 +107,9 @@ export function show($page) {
                         origin: ['100%', 0], 
                         angle:0
                     }
+                }),
+                animation.get('.bg2').animate({
+                    duration:400
                 }),
                 animation.get('.text').animate({
                     delay: 400,
